@@ -10,8 +10,8 @@ import static com.codeborne.selenide.Selenide.open;
 public class NewObjectPage {
     private CalendarComponent calendar = new CalendarComponent();
     private SelenideElement objectCodeInput = $("input[formcontrolname='code']"),
-            objectTypeInput = $("app-dict-input[formcontrolname='objType']"),
-            parentCodeInput = $("app-dict-input[formcontrolname='parentCode']"),
+            objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
+            parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger"),
             addressInput = $("input[formcontrolname='address']"),
             objectNameInput = $("textarea[formcontrolname='name']"),
             submitButton = $("p-button[ng-reflect-label='Сохранить']");
