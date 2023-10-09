@@ -1,8 +1,8 @@
 package ru.comfortsoft.bas.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
     private SelenideElement usernameInput = $("#login"),
@@ -13,6 +13,7 @@ public class LoginPage {
         open("/auth/login");
         usernameInput.setValue(username);
         passwordinput.setValue(password);
+        sleep(2000);
         submitButton.click();
         return this;
     }
