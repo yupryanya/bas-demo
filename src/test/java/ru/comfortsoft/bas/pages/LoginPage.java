@@ -13,8 +13,8 @@ public class LoginPage {
         open("/auth/login");
         usernameInput.setValue(username);
         passwordinput.setValue(password);
-        sleep(2000);
         submitButton.click();
+        sleep(2000);
         return this;
     }
 }
