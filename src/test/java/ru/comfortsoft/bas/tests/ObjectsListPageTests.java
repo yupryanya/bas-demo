@@ -28,11 +28,11 @@ public class ObjectsListPageTests extends TestBaseRemote {
                 objectsListPage.openNewObjectForm()
         );
         step("Fill required fields", () -> {
-                newObjectPage.setObjectType("Здание")
-                            .setParentCode("Арбат")
-                            .setObjectName("Школа")
-                            .setAddress("г. Москва")
-                            .submit();
+                newObjectPage.setObjectName("Школа")
+                        .setAddress("г. Москва")
+                        .setObjectType("Здание")
+                        .setParentCode("Арбат")
+                        .submit();
         });
         step("Check the object with required code exists", () -> {
             String objectCode = newObjectPage.getGeneratedCode();
