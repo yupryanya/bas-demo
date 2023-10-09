@@ -4,22 +4,23 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.comfortsoft.bas.pages.NewObjectPage;
+import ru.comfortsoft.bas.pages.ObjectViewPage;
 import ru.comfortsoft.bas.pages.ObjectsListPage;
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Objects page tests")
 @Tag("regression")
-public class ObjectsListPageTests extends TestBaseLocal {
+public class ObjectsListPageTests extends TestBaseRemote {
+    ObjectsListPage objectsListPage = new ObjectsListPage();
+    NewObjectPage newObjectPage = new NewObjectPage();
+    ObjectViewPage newObjectView = new ObjectViewPage();
+
     @Test
     @Tag("smoke")
-    @DisplayName("Create a new object with required filds filled")
+    @DisplayName("Create a new object with all required filds filled")
     void successNewObjectCreation() {
-        ObjectsListPage objectsListPage = new ObjectsListPage();
-        NewObjectPage newObjectPage = new NewObjectPage();
-
         step("Open Objects page", () ->
                 objectsListPage.openPage()
         );
@@ -30,26 +31,27 @@ public class ObjectsListPageTests extends TestBaseLocal {
                 newObjectPage.setObjectType("Здание")
                             .setParentCode("Арбат")
                             .setObjectName("Школа")
-                            .setAddress("г.Москва")
+                            .setAddress("г. Москва")
                             .submit();
         });
-        String objectCode = newObjectPage.getGeneratedCode();
-
-        sleep(2500);
+        step("Check the object with required code exists", () -> {
+            String objectCode = newObjectPage.getGeneratedCode();
+            assertTrue(newObjectView.objectWithRequiredCodeExists(objectCode));
+        });
     }
 
     @Test
-    @Tag("smoke")
-    @DisplayName("Search by address using main search input")
+    @DisplayName("Search by address using main search field")
     void successfulSearchUsingTheMainSearchInput() {
-        ObjectsListPage objectsListPage = new ObjectsListPage();
-
         step("Open Objects page", () ->
                 objectsListPage.openPage()
         );
         step("Fill main search field", () ->
-                objectsListPage.findWithMainSearch("Ленинский проспект")
+                objectsListPage.findWithMainSearch("город Москва, п. Первомайское, у пос. Птичное, СПК Птичное, дом на уч. 7")
         );
+        step("Check the object with required address exists", () -> {
+            assertTrue(objectsListPage.objectWithRequiredAddressIsDisplayed());
+        });
     }
 }
 

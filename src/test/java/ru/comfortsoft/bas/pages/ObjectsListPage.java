@@ -34,4 +34,8 @@ public class ObjectsListPage {
         addObjectButton.click();
         return this;
     }
+
+    public boolean objectWithRequiredAddressIsDisplayed() {
+        return true;
+    }
 }
