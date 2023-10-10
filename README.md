@@ -15,7 +15,7 @@
 ### <a name="about-system"></a>О системе
 
 ### <a name="tech-and-instruments"></a>Использованные технологии и инструменты
-
+<p>
 <img width="6%" title="Java" src="media/svg/java.svg">
 <img width="6%" title="IntelliJ IDEA" src="media/svg/idea.svg">
 <img width="7%" title="Gradle" src="media/svg/gradle.svg">
@@ -28,7 +28,7 @@
 <img width="6%" title="AllureReport" src="media/svg/allure.svg">
 <img width="5%" title="Allure TestOps" src="media/svg/alluretestops.svg">
 <img width="6%" title="Jira" src="media/svg/jira.svg">
-
+</p>
 `Intelij IDEA` для написания кода и работы с `Git`\
 `Gradle` для автоматизации сборки\
 `JUnit5` для выполнения тестов\
