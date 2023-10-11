@@ -8,16 +8,16 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class NewObjectPage {
-    private CalendarComponent calendar = new CalendarComponent();
-    private SelenideElement objectCodeInput = $("input[formcontrolname='code']"),
-            objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
-            parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger"),
-            addressInput = $("input[formcontrolname='address']"),
-            objectNameInput = $("textarea[formcontrolname='name']"),
-            submitButton = $("p-button[ng-reflect-label='Сохранить']");
+    private final CalendarComponent calendar = new CalendarComponent();
+    private final SelenideElement objectCodeInput = $("input[formcontrolname='code']");
+    private final SelenideElement objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger");
+    private final SelenideElement parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger");
+    private final SelenideElement addressInput = $("input[formcontrolname='address']");
+    private final SelenideElement objectNameInput = $("textarea[formcontrolname='name']");
+    private final SelenideElement submitButton = $("p-button[ng-reflect-label='Сохранить']");
 
     public NewObjectPage openPage() {
-        open("/objects/new");
+        open("/frontbas/objects/new");
         return this;
     }
 

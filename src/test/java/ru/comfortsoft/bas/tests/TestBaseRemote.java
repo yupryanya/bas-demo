@@ -27,7 +27,7 @@ public class TestBaseRemote {
         browser = browserFromPropertiesName;
         browserVersion = browserFromPropertiesVersion;
         browserSize = System.getProperty("browserSize", "1920x1080");
-        baseUrl = System.getProperty("baseUrl", "https://bas.comfortsoft.ru/frontbas");
+        baseUrl = System.getProperty("baseUrl", "https://bas.comfortsoft.ru");
         remote = "https://user1:1234@" +
                  System.getProperty("remoteWebDriver", "selenoid.autotests.cloud") +
                  "/wd/hub";

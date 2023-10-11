@@ -16,7 +16,7 @@ import static io.qameta.allure.Allure.step;
 public class TestBaseLocal {
     @BeforeAll
     static void beforeAll() {
-        baseUrl = "https://bas.comfortsoft.ru/frontbas";
+        baseUrl = "https://bas.comfortsoft.ru";
         browserSize = "1920x1080";
         Configuration.timeout = 8000;
         pageLoadStrategy = "eager";
