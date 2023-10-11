@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Objects page tests")
 @Tag("regression")
-public class ObjectsListPageTests extends TestBaseLocal {
+public class ObjectsListPageTests extends TestBaseRemote {
     ObjectsListPage objectsListPage = new ObjectsListPage();
     NewObjectPage newObjectPage = new NewObjectPage();
     ObjectViewPage newObjectView = new ObjectViewPage();
