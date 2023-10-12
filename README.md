@@ -46,7 +46,21 @@
 
 ### <a name="tests"></a>Реализованные проверки
 
+TO DO!
+
 ### <a name="how-to-run"></a>Способы запуска автотестов
+
+Удаленный запуск в CI.
+
+Настроена задача для запуска автотестов с параметрами в Jenkins.
+<p>
+<img width="60%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
+</p>
+
+Результат сборки.
+<p>
+<img width="60%" title="Launch with Jenkins" src="media/screens/jenkins-job.png">
+</p>
 
 ### <a name="allure-report"></a>Allure-отчет о результатах прохождения автотестов
 После прохождения тестов, получаем графическое представление результатов. 
@@ -62,6 +76,8 @@
 В тикет Jira добавлены нужные тесты.
 
 ### <a name="telegram-notification"></a>Уведомления о прохождении тестов в мессенджере  
-С помощью библиотеки Allure notifications отправлено автоматическое оповещение о результатах прохождения автотестов в нужный мессенджер (Telegram, Slack, Skype, Email, Mattermost, Discord, Loop).
-
+С помощью библиотеки Allure notifications отправлено автоматическое оповещение о результатах прохождения автотестов в Telegram (Slack, Skype, Email, Mattermost, Discord, Loop).
+<p>
+<img width="60%" title="Telegram notifications" src="media/screens/telegram_report.png">
+</p>
 
