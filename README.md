@@ -54,12 +54,12 @@ TO DO!
 
 Настроена задача для запуска автотестов с параметрами в Jenkins.
 <p>
-<img width="60%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
+<img width="85%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
 </p>
 
 Результат сборки.
 <p>
-<img width="60%" title="Launch with Jenkins" src="media/screens/jenkins-job.png">
+<img width="85%" title="Launch with Jenkins" src="media/screens/jenkins-job.png">
 </p>
 
 ### <a name="allure-report"></a>Allure-отчет о результатах прохождения автотестов
