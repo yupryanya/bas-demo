@@ -3,6 +3,8 @@ package ru.comfortsoft.bas.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import ru.comfortsoft.bas.pages.NewObjectPage;
 import ru.comfortsoft.bas.pages.ObjectViewPage;
 import ru.comfortsoft.bas.pages.ObjectsListPage;
@@ -21,37 +23,38 @@ public class ObjectsListPageTests extends TestBaseRemote {
 
     @Test
     @Tag("smoke")
-    @DisplayName("Open 'New object' form from Objects page")
+    @DisplayName("Open 'New object' form from Objects screen")
     void successfulNewObjectFormOpen() {
         step("Open Objects page", () ->
                 objectsListPage.openPage()
         );
         step("Open 'New Object' form", () ->
-                objectsListPage.openNewObjectForm()
+                objectsListPage.clickNewObjectButton()
         );
         step("Check 'New Object' form is displayed", () -> {
-                assertTrue(newObjectView.newObjectFormIsDisplayed());
+                assertTrue(newObjectPage.newObjectFormIsDisplayed());
         });
     }
 
-
-    @Test
     @Tag("smoke")
+    @ParameterizedTest
+    @CsvSource( value = {
+            "Школа     : г. Москва                  : Здание : Войковский",
+            "Жилой дом : г. Москва, улица Арбат, 23 : Здание : Арбат"}, delimiter = ':')
     @DisplayName("Create a new object with all required fields filled")
-    void successfulNewObjectCreation () {
+    void successfulNewObjectCreation (String name, String address, String type, String parent) {
         step("Open 'New Object' page", () ->
                 newObjectPage.openPage()
         );
         step("Fill all required fields", () -> {
-                newObjectPage.setObjectName("Школа")
-                    .setAddress("г. Москва")
-                    .setObjectType("Здание")
-                    .setParentCode("Арбат")
+                newObjectPage.setObjectName(name)
+                    .setAddress(address)
+                    .setObjectType(type)
+                    .setParentCode(parent)
                     .submit();
         });
-        step("Check the object with generated code exists", () -> {
-                String objectCode = newObjectPage.getGeneratedCode();
-                assertTrue(newObjectView.objectWithRequiredCodeExists(objectCode));
+        step("Check the object with same data is displayed in new screen", () -> {
+                assertTrue(newObjectView.objectWithRequiredFieldsisDisplayed(address, type, parent));
         });
     }
 
@@ -100,4 +103,3 @@ public class ObjectsListPageTests extends TestBaseRemote {
         });
     }
 }
-

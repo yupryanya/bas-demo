@@ -7,13 +7,11 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ObjectsListPage {
-    SidebarFilter sidebarFilter = new SidebarFilter();
-    private final CalendarComponent calendar = new CalendarComponent();
-    private final SelenideElement sidebarFilterButton = $("button[aria-controls='collapseFilter']");
-    private final SelenideElement searchInput = $("input[type='search']");
-    private final SelenideElement mainSearchSubmitButton = $("button[type='submit']");
-    private final SelenideElement addObjectButton = $("p-button[ng-reflect-label='Добавить']");
-    private final SelenideElement levelFilterDropdown = $(".level-wrapper");
+    private final SelenideElement sidebarFilterButton = $("button[aria-controls='collapseFilter']"),
+                                searchInput = $("input[type='search']"),
+                                mainSearchSubmitButton = $("button[type='submit']"),
+                                addObjectButton = $("p-button[ng-reflect-label='Добавить']"),
+                                levelFilterDropdown = $(".level-wrapper");
 
 
     public ObjectsListPage openPage() {
@@ -32,7 +30,7 @@ public class ObjectsListPage {
         return this;
     }
 
-    public ObjectsListPage openNewObjectForm() {
+    public ObjectsListPage clickNewObjectButton() {
         addObjectButton.click();
         return this;
     }
