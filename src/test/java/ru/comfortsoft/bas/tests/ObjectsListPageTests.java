@@ -1,15 +1,20 @@
 package ru.comfortsoft.bas.tests;
 
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import ru.comfortsoft.bas.pages.NewObjectPage;
 import ru.comfortsoft.bas.pages.ObjectViewPage;
 import ru.comfortsoft.bas.pages.ObjectsListPage;
 import ru.comfortsoft.bas.pages.SidebarFilter;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,12 +23,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ObjectsListPageTests extends TestBaseRemote {
     ObjectsListPage objectsListPage = new ObjectsListPage();
     NewObjectPage newObjectPage = new NewObjectPage();
-    ObjectViewPage newObjectView = new ObjectViewPage();
+    ObjectViewPage objectViewPage = new ObjectViewPage();
     SidebarFilter sidebarFilter = new SidebarFilter();
 
     @Test
-    @Tag("smoke")
     @DisplayName("Open 'New object' form from Objects screen")
+    @Tag("smoke")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("Yulia Azovtseva")
     void successfulNewObjectFormOpen() {
         step("Open Objects page", () ->
                 objectsListPage.openPage()
@@ -31,50 +38,70 @@ public class ObjectsListPageTests extends TestBaseRemote {
         step("Open 'New Object' form", () ->
                 objectsListPage.clickNewObjectButton()
         );
-        step("Check 'New Object' form is displayed", () -> {
-                assertTrue(newObjectPage.newObjectFormIsDisplayed());
-        });
+        step("Check 'New Object' form is displayed", () ->
+                newObjectPage.newObjectFormIsDisplayed()
+        );
     }
 
-    @Tag("smoke")
     @ParameterizedTest
+    @DisplayName("Create a new object with all required fields filled")
+    @Tag("smoke")
     @CsvSource( value = {
             "Школа     : г. Москва                  : Здание : Войковский",
-            "Жилой дом : г. Москва, улица Арбат, 23 : Здание : Арбат"}, delimiter = ':')
-    @DisplayName("Create a new object with all required fields filled")
+            "Жилой дом : г. Москва, улица Арбат, 23 : Здание : Арбат"
+    },
+            delimiter = ':'
+    )
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("Yulia Azovtseva")
     void successfulNewObjectCreation (String name, String address, String type, String parent) {
         step("Open 'New Object' page", () ->
                 newObjectPage.openPage()
         );
-        step("Fill all required fields", () -> {
+        step("Fill all required fields", () ->
                 newObjectPage.setObjectName(name)
                     .setAddress(address)
                     .setObjectType(type)
                     .setParentCode(parent)
-                    .submit();
-        });
-        step("Check the object with same data is displayed in new screen", () -> {
-                assertTrue(newObjectView.objectWithRequiredFieldsisDisplayed(address, type, parent));
-        });
+                    .clickSubmitButton()
+        );
+        step("Check the object with same data is displayed", () ->
+                objectViewPage.objectWithRequiredFieldsisDisplayed(address, type, parent)
+        );
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Search by existing address using 'Main Search' field")
-    void successfulSearchByAddressUsingTheMainSearchInput() {
+    @ValueSource(strings = {
+            "пос. Птичное, СПК Птичное, дом на уч. 7",
+            "Даниловский"
+    })
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Yulia Azovtseva")
+    void successfulSearchByAddressUsingTheMainSearchInput(String address) {
         step("Open 'Objects' page", () ->
                 objectsListPage.openPage()
         );
-        step("Fill 'Main Search' field with existing address", () ->
-                objectsListPage.findWithMainSearch("п. Первомайское, у пос. Птичное, СПК Птичное, дом на уч. 7")
+        step("Find element with the 'Main search' field", () ->
+                objectsListPage.fillTheMainSearchField(address)
         );
-        step("Check the object with required address is diplayed", () -> {
-                assertTrue(objectsListPage.objectWithRequiredAddressIsDisplayed());
-        });
+        step("Cick the first element in objects list", () ->
+                objectsListPage.clickFirstElementFromList()
+        );
+        step("Check the object with required address is displayed", () ->
+                objectViewPage.objectWithRequiredFieldsisDisplayed(address)
+        );
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Search by existing address using 'Sidebar Filter'")
-    void successfulSearchByAddressUsingSidebarFilter() {
+    @ValueSource(strings = {
+            "Щукинская улица, дом 42",
+            "Новая Москва"
+    })
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Yulia Azovtseva")
+    void successfulSearchByAddressUsingSidebarFilter(String address) {
         step("Open 'Objects' page", () ->
                 objectsListPage.openPage()
         );
@@ -82,24 +109,37 @@ public class ObjectsListPageTests extends TestBaseRemote {
                 objectsListPage.openSidebarFilter()
         );
         step("Fill the address field with existing address", () ->
-                sidebarFilter.findWithSidebarFilterByAddress("п. Первомайское, у пос. Птичное, СПК Птичное, дом на уч. 7")
+                sidebarFilter.setAddress(address)
+                        .clickSubmitButton()
         );
-        step("Check the object with required address is displayed", () -> {
-                assertTrue(objectsListPage.objectWithRequiredAddressIsDisplayed());
-        });
+        step("Cick the first element in objects list", () ->
+                objectsListPage.clickFirstElementFromList()
+        );
+        step("Check the object with required address is displayed", () ->
+                objectViewPage.objectWithRequiredFieldsisDisplayed(address)
+        );
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Filter objects using 'Level Filter' field")
-    void successfulFilteringByLevelUsingUpperLevelFilter() {
+    @ValueSource(strings = {
+            "Город",
+            "Округ"
+    })
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Yulia Azovtseva")
+    void successfulFilteringByLevelUsingUpperLevelFilter(String level) {
         step("Open 'Objects' page", () ->
                 objectsListPage.openPage()
         );
         step("Set 'Level Filter' value", () ->
-                objectsListPage.setLevelFilterValue("Город")
+                objectsListPage.setLevelFilterValue(level)
         );
-        step("Check the objects with required level are displayed", () -> {
-                assertTrue(objectsListPage.objectWithRequiredLevelIsDisplayed());
-        });
+        step("Cick the first element in objects list", () ->
+                objectsListPage.clickFirstElementFromList()
+        );
+        step("Check the objects with required level are displayed", () ->
+                objectViewPage.objectWithRequiredFieldsisDisplayed(level)
+        );
     }
 }

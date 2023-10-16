@@ -1,18 +1,17 @@
 package ru.comfortsoft.bas.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import ru.comfortsoft.bas.pages.components.CalendarComponent;
-
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ObjectsListPage {
     private final SelenideElement sidebarFilterButton = $("button[aria-controls='collapseFilter']"),
-                                searchInput = $("input[type='search']"),
-                                mainSearchSubmitButton = $("button[type='submit']"),
-                                addObjectButton = $("p-button[ng-reflect-label='Добавить']"),
-                                levelFilterDropdown = $(".level-wrapper");
-
+                                    searchInput = $("input[type='search']"),
+                                    mainSearchSubmitButton = $("button[type='submit']"),
+                                    addObjectButton = $("p-button[ng-reflect-label='Добавить']"),
+                                    levelFilter = $(".level-wrapper"),
+                                    elementsList = $(".p-datatable-tbody"),
+                                    levelFilterDropdown = $(".p-dropdown-items");
 
     public ObjectsListPage openPage() {
         open("/frontbas/objects");
@@ -24,7 +23,7 @@ public class ObjectsListPage {
         return this;
     }
 
-    public ObjectsListPage findWithMainSearch(String value) {
+    public ObjectsListPage fillTheMainSearchField(String value) {
         searchInput.setValue(value);
         mainSearchSubmitButton.click();
         return this;
@@ -35,17 +34,17 @@ public class ObjectsListPage {
         return this;
     }
 
-    public boolean objectWithRequiredAddressIsDisplayed() {
-        return true;
-    }
-
     public ObjectsListPage setLevelFilterValue(String value) {
-        levelFilterDropdown.click();
-        $("[ng-reflect-label=" + value + "]").click();
+        levelFilter.click();
+        levelFilterDropdown.$("[ng-reflect-label=" + value + "]").click();
         return this;
     }
 
-    public boolean objectWithRequiredLevelIsDisplayed() {
-        return true;
+    public void objectWithRequiredLevelIsDisplayed() {
+        elementsList.$("a").click();
+    }
+
+    public void clickFirstElementFromList() {
+        elementsList.$("a").click();
     }
 }

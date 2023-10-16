@@ -14,7 +14,12 @@ public class SidebarFilter {
                                 submitButton = $("p-button[ng-reflect-label='Найти']");
 
     public SidebarFilter setCode(String value) {
-        prefectInput.setValue(value);
+        codeInput.setValue(value);
+        return this;
+    }
+
+    public SidebarFilter setName(String value) {
+        nameInput.setValue(value);
         return this;
     }
 
@@ -23,9 +28,12 @@ public class SidebarFilter {
         return this;
     }
 
-    public SidebarFilter findWithSidebarFilterByAddress(String value) {
+    public SidebarFilter setAddress(String value) {
         adressInput.setValue(value);
-        submitButton.click();
         return this;
+    }
+
+    public void clickSubmitButton() {
+        submitButton.click();
     }
 }

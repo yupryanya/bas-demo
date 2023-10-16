@@ -54,12 +54,12 @@ TO DO!
 
 Настроена задача для запуска автотестов с параметрами в Jenkins.
 <p>
-<img width="85%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
+<img width="88%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
 </p>
 
 Результат сборки.
 <p>
-<img width="85%" title="Launch with Jenkins" src="media/screens/jenkins-job.png">
+<img width="88%" title="Launch with Jenkins" src="media/screens/jenkins-job.png">
 </p>
 
 ### <a name="allure-report"></a>Allure-отчет о результатах прохождения автотестов
@@ -78,6 +78,6 @@ TO DO!
 ### <a name="telegram-notification"></a>Уведомления о прохождении тестов в мессенджере  
 С помощью библиотеки Allure notifications отправлено автоматическое оповещение о результатах прохождения автотестов в Telegram (Slack, Skype, Email, Mattermost, Discord, Loop).
 <p>
-<img width="60%" title="Telegram notifications" src="media/screens/telegram_report.png">
+<img width="30%" title="Telegram notifications" src="media/screens/telegram_report.png">
 </p>
 

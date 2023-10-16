@@ -1,14 +1,12 @@
 package ru.comfortsoft.bas.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import ru.comfortsoft.bas.pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class NewObjectPage {
-    private final CalendarComponent calendar = new CalendarComponent();
     private final SelenideElement objectCodeInput = $("input[formcontrolname='code']"),
                                     objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
                                     commonDropdown = $(".im-options"),
@@ -21,11 +19,6 @@ public class NewObjectPage {
     public NewObjectPage openPage() {
         open("/frontbas/objects/new");
         return this;
-    }
-
-    public boolean newObjectFormIsDisplayed() {
-        objectNewPage.isDisplayed();
-        return true;
     }
 
     public NewObjectPage setObjectType(String value) {
@@ -50,11 +43,15 @@ public class NewObjectPage {
         return this;
     }
 
-    public void submit() {
+    public void clickSubmitButton() {
         submitButton.click();
     }
 
     public String getGeneratedCode() {
         return objectCodeInput.val();
+    }
+
+    public void newObjectFormIsDisplayed() {
+        objectNewPage.isDisplayed();
     }
 }
