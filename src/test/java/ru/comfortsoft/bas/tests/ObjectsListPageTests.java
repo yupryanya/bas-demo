@@ -97,7 +97,7 @@ public class ObjectsListPageTests extends TestBaseRemote {
     @DisplayName("Search by existing address using 'Sidebar Filter'")
     @ValueSource(strings = {
             "Щукинская улица, дом 42",
-            "Новая Москва"
+            "Ленинский"
     })
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
