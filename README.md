@@ -5,7 +5,7 @@
 - [О системе](#about-system)
 - [Использованные технологии и инструменты](#tech-and-instruments)
 - [Реализованные проверки](#tests)
-- [Способы запуска автотестов](#how-to-run)
+- [Удаленный запуск в CI](#how-to-run)
 - [Allure-отчет о результатах прохождения автотестов](#allure-report)
 - [Тестовые артефакты](#test-artefacts)
 - [Интеграция с системой тест-менеджмента Allure TestOps](#allure-test-ops)
@@ -46,11 +46,14 @@
 
 ### <a name="tests"></a>Реализованные проверки
 
-TO DO!
+Реализованы проверки для страницы "Объекты"
+1. Вызов формы создания нового объекта из окна "Объекты"
+2. Поиск объекта по существующему адресу с помощью основного поля поиска
+3. Поиск объекта по существующему адресу с помощью бокового фильтра"
+4. Фильтрация списка объектов с помощью фильтра по уровню
+5. Создание нового объекта с помощью формы создания объекта с заполненными обязательными полями
 
-### <a name="how-to-run"></a>Способы запуска автотестов
-
-Удаленный запуск в CI.
+### <a name="how-to-run"></a>Удаленный запуск в CI
 
 Настроена задача для запуска автотестов с параметрами в Jenkins.
 <p>
@@ -59,21 +62,33 @@ TO DO!
 
 Результат сборки.
 <p>
-<img width="88%" title="Launch with Jenkins" src="media/screens/jenkins-job.png">
+<img width="88%" title="Jenkins job results" src="media/screens/jenkins-job.png">
 </p>
 
 ### <a name="allure-report"></a>Allure-отчет о результатах прохождения автотестов
 После прохождения тестов, получаем графическое представление результатов. 
-Каждый тест реализован как последовательность лямбда степов и отображается в отчете в виде понятных шагов.
+Каждый тест отображается в отчете в виде понятных шагов.
+<p>
+<img width="88%" title="Allure report test steps" src="media/screens/allure_report_with_steps.png">
+</p>
 
 ### <a name="test-artefacts"></a>Тестовые артефакты
-В Allure-отчете собрана подробная информация о прохождении тестов, включая снапшоты, скриншоты и записи экрана 
+В Allure-отчете сохраняется подробная информация, включая снапшоты, скриншоты и записи экрана для разбора упавших тестов.
+<p>
+<img width="88%" title="Allure report artefacts" src="media/screens/allure_report_with_screenshots.png">
+</p>
 
 ### <a name="allure-test-ops"></a>Интеграция с системой тест-менеджмента Allure TestOps
-Ручные и автоматизированные проверки объединены в один тест план. 
+Ручные и автоматизированные проверки объединены в один тест сьют. 
+<p>
+<img width="88%" title="Allure TestOps integration" src="media/screens/allure_testops_suite.png">
+</p>
 
 ### <a name="jira"></a>Интеграция с Jira
-В тикет Jira добавлены нужные тесты.
+В тикет Jira добавлены тесты из Allure TestOps.
+<p>
+<img width="88%" title="Allure TestOps integration" src="media/screens/jira_integration.png">
+</p>
 
 ### <a name="telegram-notification"></a>Уведомления о прохождении тестов в мессенджере  
 С помощью библиотеки Allure notifications отправлено автоматическое оповещение о результатах прохождения автотестов в Telegram (Slack, Skype, Email, Mattermost, Discord, Loop).
