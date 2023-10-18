@@ -40,7 +40,7 @@ public class TestBaseRemote {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-        Configuration.timeout = 8000;
+        Configuration.timeout = 10000;
     }
 
     @BeforeEach

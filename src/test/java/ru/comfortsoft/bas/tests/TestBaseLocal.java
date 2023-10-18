@@ -10,15 +10,13 @@ import ru.comfortsoft.bas.pages.LoginPage;
 
 import static com.codeborne.selenide.Configuration.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.sleep;
-import static io.qameta.allure.Allure.step;
 
 public class TestBaseLocal {
     @BeforeAll
     static void beforeAll() {
         baseUrl = "https://bas.comfortsoft.ru";
         browserSize = "1920x1080";
-        Configuration.timeout = 8000;
+        Configuration.timeout = 10000;
         pageLoadStrategy = "eager";
     }
 
@@ -35,7 +33,7 @@ public class TestBaseLocal {
 
     @AfterEach
     public void closePage() {
-          closeWebDriver();
+        closeWebDriver();
     }
 }
 

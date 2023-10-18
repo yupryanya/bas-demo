@@ -7,8 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class NewObjectPage {
-    private final SelenideElement objectCodeInput = $("input[formcontrolname='code']"),
-                                    objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
+    private final SelenideElement objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
                                     commonDropdown = $(".im-options"),
                                     parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger"),
                                     addressInput = $("input[formcontrolname='address']"),
@@ -45,10 +44,6 @@ public class NewObjectPage {
 
     public void clickSubmitButton() {
         submitButton.click();
-    }
-
-    public String getGeneratedCode() {
-        return objectCodeInput.val();
     }
 
     public void newObjectFormIsDisplayed() {

@@ -40,10 +40,6 @@ public class ObjectsListPage {
         return this;
     }
 
-    public void objectWithRequiredLevelIsDisplayed() {
-        elementsList.$("a").click();
-    }
-
     public void clickFirstElementFromList() {
         elementsList.$("a").click();
     }

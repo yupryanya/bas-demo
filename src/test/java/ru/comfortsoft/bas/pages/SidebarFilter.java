@@ -7,26 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class SidebarFilter {
     private final CalendarComponent calendar = new CalendarComponent();
-    private final SelenideElement codeInput = $("#iduo-code"),
-                                nameInput = $("#uo-name"),
-                                adressInput = $("#uo-address"),
-                                prefectInput = $("[ng-reflect-input-id='uo-prefect']"),
+    private final SelenideElement adressInput = $("#uo-address"),
                                 submitButton = $("p-button[ng-reflect-label='Найти']");
-
-    public SidebarFilter setCode(String value) {
-        codeInput.setValue(value);
-        return this;
-    }
-
-    public SidebarFilter setName(String value) {
-        nameInput.setValue(value);
-        return this;
-    }
-
-    public SidebarFilter setDate(String year, String month, String day) {
-        calendar.setDate(year, month, day);
-        return this;
-    }
 
     public SidebarFilter setAddress(String value) {
         adressInput.setValue(value);
