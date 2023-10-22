@@ -18,7 +18,7 @@ import static io.qameta.allure.Allure.step;
 
 @DisplayName("Objects page tests")
 @Tag("regression")
-public class ObjectsListPageTests extends TestBaseRemote {
+public class ObjectsListPageTests extends TestBase {
     ObjectsListPage objectsListPage = new ObjectsListPage();
     NewObjectPage newObjectPage = new NewObjectPage();
     ObjectViewPage objectViewPage = new ObjectViewPage();
