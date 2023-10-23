@@ -8,12 +8,12 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class NewObjectPage {
     private final SelenideElement objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
-                                    commonDropdown = $(".im-options"),
-                                    parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger"),
-                                    addressInput = $("input[formcontrolname='address']"),
-                                    objectNameInput = $("textarea[formcontrolname='name']"),
-                                    submitButton = $("p-button[ng-reflect-label='Сохранить']"),
-                                    objectNewPage = $("app-object-create-page");
+            commonDropdown = $(".im-options"),
+            parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger"),
+            addressInput = $("input[formcontrolname='address']"),
+            objectNameInput = $("textarea[formcontrolname='name']"),
+            submitButton = $("p-button[ng-reflect-label='Сохранить']"),
+            objectNewPage = $("app-object-create-page");
 
     public NewObjectPage openPage() {
         open("/frontbas/objects/new");
