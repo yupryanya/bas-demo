@@ -9,21 +9,22 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.pages.NewObjectPage;
 import ru.comfortsoft.bas.pages.ObjectViewPage;
 import ru.comfortsoft.bas.pages.ObjectsListPage;
-import ru.comfortsoft.bas.pages.SidebarFilter;
+import ru.comfortsoft.bas.pages.components.SidebarFilterComponent;
 
 import static io.qameta.allure.Allure.step;
 
 @DisplayName("Objects page tests")
-@Tag("regression")
 public class ObjectsListPageTests extends TestBase {
     ObjectsListPage objectsListPage = new ObjectsListPage();
     NewObjectPage newObjectPage = new NewObjectPage();
     ObjectViewPage objectViewPage = new ObjectViewPage();
-    SidebarFilter sidebarFilter = new SidebarFilter();
+    SidebarFilterComponent sidebarFilter = new SidebarFilterComponent();
 
+    @WithLogin
     @Test
     @DisplayName("Open 'New object' form from Objects screen")
     @Tag("smoke")
@@ -41,6 +42,7 @@ public class ObjectsListPageTests extends TestBase {
         );
     }
 
+    @WithLogin
     @ParameterizedTest
     @DisplayName("Create a new object with all required fields filled")
     @Tag("smoke")
@@ -68,6 +70,7 @@ public class ObjectsListPageTests extends TestBase {
         );
     }
 
+    @WithLogin
     @ParameterizedTest
     @DisplayName("Search by existing address using 'Main Search' field")
     @ValueSource(strings = {
@@ -91,6 +94,7 @@ public class ObjectsListPageTests extends TestBase {
         );
     }
 
+    @WithLogin
     @ParameterizedTest
     @DisplayName("Search by existing address using 'Sidebar Filter'")
     @ValueSource(strings = {
@@ -118,6 +122,7 @@ public class ObjectsListPageTests extends TestBase {
         );
     }
 
+    @WithLogin
     @ParameterizedTest
     @DisplayName("Filter objects using 'Level Filter' field")
     @ValueSource(strings = {

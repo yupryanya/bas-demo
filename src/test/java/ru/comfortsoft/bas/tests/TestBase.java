@@ -3,24 +3,21 @@ package ru.comfortsoft.bas.tests;
 import com.codeborne.selenide.logevents.SelenideLogger;
 
 import io.qameta.allure.selenide.AllureSelenide;
-import org.aeonbits.owner.ConfigFactory;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import ru.comfortsoft.bas.config.WebDriverConfig;
-import ru.comfortsoft.bas.config.WebDriverProvider;
+import ru.comfortsoft.bas.config.App;
+import ru.comfortsoft.bas.helpers.WebDriverProvider;
 import ru.comfortsoft.bas.helpers.Attach;
-import ru.comfortsoft.bas.pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
-    WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
-    static final WebDriverProvider webDriverProvider = new WebDriverProvider();
-
     @BeforeAll
     static void init() {
-        webDriverProvider.webDriverConfigInit();
+        WebDriverProvider.webDriverConfigInit();
+        RestAssured.baseURI = App.appConfig.apiUrl();
     }
 
     @BeforeEach
@@ -28,18 +25,12 @@ public class TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    @BeforeEach
-    public void login() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("dmitelena", "123QWEasd");
-    }
-
     @AfterEach
     void addAttachments() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        if (webDriverConfig.isRemote()) {
+        if (App.appConfig.isRemote()) {
             Attach.addVideo();
         }
         closeWebDriver();
