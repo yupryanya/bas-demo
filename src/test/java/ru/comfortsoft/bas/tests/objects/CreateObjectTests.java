@@ -46,9 +46,8 @@ public class CreateObjectTests extends TestBase {
         createObjectPage.setAddress(objectAddress);
         createObjectPage.setObjectType(objectType.getObjectTypeName());
         createObjectPage.setParentCode(district.getDistrictName());
-        createObjectPage.clickSubmitButton();
-
         String objectCode = createObjectPage.getObjectCode();
+        createObjectPage.clickSubmitButton();
         objectViewPage.objectWithRequiredFieldsisDisplayed(objectAddress, district.getDistrictName(), objectType.getObjectTypeName());
 
         objectsApi.deleteObjectByCode(objectCode);
