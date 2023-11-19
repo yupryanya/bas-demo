@@ -1,15 +1,15 @@
-package ru.comfortsoft.bas.api;
+package ru.comfortsoft.bas.api.auth;
 
 import io.restassured.http.ContentType;
 import ru.comfortsoft.bas.config.App;
 
 import static io.restassured.RestAssured.given;
-import static ru.comfortsoft.bas.specs.LoginSpec.*;
+import static ru.comfortsoft.bas.specs.BaseSpec.*;
 
 public class LoginApi {
-    public static String getLoginResponse() {
+    public static String getSessionIdCookie() {
 
-    return given(requestSpec)
+        return given(defaultRequestSpec)
                 .when()
                 .contentType(ContentType.URLENC)
                 .formParam("username", App.authConfig.username())

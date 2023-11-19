@@ -47,7 +47,8 @@ dependencies {
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jSimpleVersion",
-            "org.aeonbits.owner:owner:$ownerVersion"
+            "org.aeonbits.owner:owner:$ownerVersion",
+            'com.github.javafaker:javafaker:1.0.2'
     )
 }
 
@@ -64,7 +65,7 @@ tasks.withType(Test){
 
 task regression(type: Test) {
     useJUnitPlatform{
-        includeTags('regression')
+        includeTags('regress')
     }
 }
 

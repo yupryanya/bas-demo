@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.models;
+package ru.comfortsoft.bas.models.auth;
 
 import lombok.Data;
 

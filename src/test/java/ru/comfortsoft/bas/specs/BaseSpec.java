@@ -10,18 +10,21 @@ import static io.restassured.filter.log.LogDetail.STATUS;
 import static io.restassured.http.ContentType.JSON;
 import static ru.comfortsoft.bas.helpers.CustomAllureListener.withCustomTemplates;
 
-public class LoginSpec {
-    public static RequestSpecification requestSpec = with()
+public class BaseSpec {
+    public static RequestSpecification defaultRequestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
             .log().method()
             .log().body()
-            .contentType(JSON)
-            .basePath("/bas");
-
+            .contentType(JSON);
     public static ResponseSpecification responseWithStatusCode200Spec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(200)
+            .build();
+    public static ResponseSpecification responseWithStatusCode204Spec = new ResponseSpecBuilder()
+            .log(STATUS)
+            .log(BODY)
+            .expectStatusCode(204)
             .build();
 }

@@ -24,11 +24,11 @@ public interface AppConfig extends Config {
     boolean isRemote();
 
     @Key("apiUrl" )
-    @DefaultValue("https://bas.comfortsoft.ru" )
+    @DefaultValue("https://bas.comfortsoft.ru/bas" )
     String apiUrl();
 
     @Key("webUrl" )
-    @DefaultValue("https://bas.comfortsoft.ru" )
+    @DefaultValue("https://bas.comfortsoft.ru/frontbas" )
     String webUrl();
 
     @Key("remoteUrl")

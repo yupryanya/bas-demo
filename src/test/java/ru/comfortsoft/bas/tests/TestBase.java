@@ -10,10 +10,25 @@ import org.junit.jupiter.api.BeforeEach;
 import ru.comfortsoft.bas.config.App;
 import ru.comfortsoft.bas.helpers.WebDriverProvider;
 import ru.comfortsoft.bas.helpers.Attach;
+import ru.comfortsoft.bas.pages.auth.LoginPage;
+import ru.comfortsoft.bas.pages.components.Header;
+import ru.comfortsoft.bas.pages.components.SidebarFilter;
+import ru.comfortsoft.bas.pages.main.MainPage;
+import ru.comfortsoft.bas.pages.objects.CreateObjectPage;
+import ru.comfortsoft.bas.pages.objects.ObjectViewPage;
+import ru.comfortsoft.bas.pages.objects.ObjectsListPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
+    protected final LoginPage loginPage = new LoginPage();
+    protected final Header header = new Header();
+    protected final MainPage mainPage = new MainPage();
+    protected final ObjectsListPage objectsListPage = new ObjectsListPage();
+    protected final CreateObjectPage newObjectPage = new CreateObjectPage();
+    protected final ObjectViewPage objectViewPage = new ObjectViewPage();
+    protected final SidebarFilter sidebarFilter = new SidebarFilter();
+
     @BeforeAll
     static void init() {
         WebDriverProvider.webDriverConfigInit();

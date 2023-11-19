@@ -1,52 +1,55 @@
-package ru.comfortsoft.bas.pages;
+package ru.comfortsoft.bas.pages.objects;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class NewObjectPage {
+public class CreateObjectPage {
     private final SelenideElement objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
             commonDropdown = $(".im-options"),
             parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger"),
             addressInput = $("input[formcontrolname='address']"),
             objectNameInput = $("textarea[formcontrolname='name']"),
             submitButton = $("p-button[ng-reflect-label='Сохранить']"),
-            objectNewPage = $("app-object-create-page");
+            objectCreatePage = $("app-object-create-page");
 
-    public NewObjectPage openPage() {
-        open("/frontbas/objects/new");
+    @Step("Open 'New Object' page")
+    public CreateObjectPage openPage() {
+        open("/objects/new");
         return this;
     }
 
-    public NewObjectPage setObjectType(String value) {
+    @Step("Check that 'New Object' page is visible")
+    public void checkTheNewObjectFormIsVisible() {
+        objectCreatePage.isDisplayed();
+    }
+
+    public CreateObjectPage setObjectType(String value) {
         objectTypeInput.click();
         commonDropdown.$(byText(value)).click();
         return this;
     }
 
-    public NewObjectPage setParentCode(String value) {
+    public CreateObjectPage setParentCode(String value) {
         parentCodeInput.click();
         commonDropdown.$(byText(value)).click();
         return this;
     }
 
-    public NewObjectPage setAddress(String value) {
+    public CreateObjectPage setAddress(String value) {
         addressInput.setValue(value);
         return this;
     }
 
-    public NewObjectPage setObjectName(String value) {
+    public CreateObjectPage setObjectName(String value) {
         objectNameInput.setValue(value);
         return this;
     }
 
     public void clickSubmitButton() {
         submitButton.click();
-    }
-
-    public void newObjectFormIsDisplayed() {
-        objectNewPage.isDisplayed();
     }
 }

@@ -6,7 +6,7 @@ import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CalendarComponent {
+public class Calendar {
 
     private void setCalendarDate(String year, String month, String day) {
         $(".react-datepicker__year-select").selectOption(year);
