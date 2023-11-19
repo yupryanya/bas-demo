@@ -10,9 +10,10 @@ import static com.codeborne.selenide.Selenide.open;
 public class CreateObjectPage {
     private final SelenideElement objectTypeInput = $("app-dict-input[formcontrolname='objType'] .p-dropdown-trigger"),
             commonDropdown = $(".im-options"),
+            codeInput = $("input[formcontrolname='code']"),
             parentCodeInput = $("app-dict-input[formcontrolname='parentCode'] .p-dropdown-trigger"),
             addressInput = $("input[formcontrolname='address']"),
-            objectNameInput = $("textarea[formcontrolname='name']"),
+            nameInput = $("textarea[formcontrolname='name']"),
             submitButton = $("p-button[ng-reflect-label='Сохранить']"),
             objectCreatePage = $("app-object-create-page");
 
@@ -49,12 +50,17 @@ public class CreateObjectPage {
 
     @Step("Set object name {value}")
     public CreateObjectPage setObjectName(String value) {
-        objectNameInput.setValue(value);
+        nameInput.setValue(value);
         return this;
     }
 
     @Step("Click Submit button")
     public void clickSubmitButton() {
         submitButton.click();
+    }
+
+    @Step("Get object code")
+    public String getObjectCode() {
+        return codeInput.getValue();
     }
 }

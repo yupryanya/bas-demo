@@ -32,7 +32,7 @@ public class ObjectsListPage {
         sidebarFilterButton.click();
     }
 
-    @Step("Find element with the 'Main search' field")
+    @Step("Find object {value} with the upper 'Main search' field")
     public void fillTheMainSearchField(String value) {
         searchInput.setValue(value);
         mainSearchSubmitButton.click();
@@ -43,7 +43,7 @@ public class ObjectsListPage {
         addObjectButton.click();
     }
 
-    @Step("Set 'Level Filter' value to {value}")
+    @Step("Set upper 'Level Filter' value to {value}")
     public void setLevelFilterValue(String value) {
         levelFilter.click();
         levelFilterDropdown.$(byText(value)).click();

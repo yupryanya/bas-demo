@@ -19,7 +19,7 @@ public class ObjectsApi {
                 .extract().as(CreateObjectResponseModel.class);
     }
 
-    public void deleteObject(String objectId) {
+    public void deleteObjectByCode(String objectId) {
         given().spec(defaultRequestSpec)
                 .cookie("JSESSIONID", LoginApi.getSessionIdCookie())
                 .pathParam("id", objectId)

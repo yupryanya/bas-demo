@@ -24,7 +24,7 @@ public class CreateObjectTests extends TestBase {
     void successfulNewObjectFormOpenTest() {
         objectsListPage.openPage();
         objectsListPage.clickNewObjectButton();
-        newObjectPage.checkTheNewObjectFormIsVisible();
+        createObjectPage.checkTheNewObjectFormIsVisible();
     }
 
     @WithLogin
@@ -41,12 +41,16 @@ public class CreateObjectTests extends TestBase {
         String objectAddress = randomValues.generateRandomAddress();
         String objectName = "Наименование";
 
-        newObjectPage.openPage();
-        newObjectPage.setObjectName(objectName);
-        newObjectPage.setAddress(objectAddress);
-        newObjectPage.setObjectType(objectType.getObjectTypeName());
-        newObjectPage.setParentCode(district.getDistrictName());
-        newObjectPage.clickSubmitButton();
+        createObjectPage.openPage();
+        createObjectPage.setObjectName(objectName);
+        createObjectPage.setAddress(objectAddress);
+        createObjectPage.setObjectType(objectType.getObjectTypeName());
+        createObjectPage.setParentCode(district.getDistrictName());
+        createObjectPage.clickSubmitButton();
+
+        String objectCode = createObjectPage.getObjectCode();
         objectViewPage.objectWithRequiredFieldsisDisplayed(objectAddress, district.getDistrictName(), objectType.getObjectTypeName());
+
+        objectsApi.deleteObjectByCode(objectCode);
     }
 }

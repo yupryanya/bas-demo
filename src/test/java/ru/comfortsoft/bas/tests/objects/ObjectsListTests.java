@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import ru.comfortsoft.bas.api.objects.ObjectsApi;
 import ru.comfortsoft.bas.data.MenuItems;
 import ru.comfortsoft.bas.data.ObjectLevel;
 import ru.comfortsoft.bas.helpers.WithLogin;
@@ -19,7 +18,6 @@ import ru.comfortsoft.bas.utilities.RandomValues;
 
 @DisplayName("Objects list tests")
 public class ObjectsListTests extends TestBase {
-    private final ObjectsApi objectsApi = new ObjectsApi();
     RandomValues randomValues = new RandomValues();
     private final CreateObjectRequestModel object = CreateObjectRequestModel.builder()
             .objType(randomValues.getRandomObjectType().getObjectTypeCode())
@@ -56,7 +54,7 @@ public class ObjectsListTests extends TestBase {
 
     @WithLogin
     @Test
-    @DisplayName("Search by existing address using 'Main Search' field")
+    @DisplayName("Search by existing address using upper 'Main Search' field")
     @Tag("regress")
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
@@ -68,7 +66,7 @@ public class ObjectsListTests extends TestBase {
         objectsListPage.clickFirstElementInList();
         objectViewPage.objectWithRequiredFieldsisDisplayed(object.getAddress());
 
-        objectsApi.deleteObject(objectCode);
+        objectsApi.deleteObjectByCode(objectCode);
     }
 
     @WithLogin
@@ -83,9 +81,10 @@ public class ObjectsListTests extends TestBase {
         objectsListPage.openPage();
         objectsListPage.openSidebarFilter();
         sidebarFilter.setAddress(object.getAddress());
+        sidebarFilter.clickSubmitButton();
         objectsListPage.clickFirstElementInList();
         objectViewPage.objectWithRequiredFieldsisDisplayed(object.getAddress());
 
-        objectsApi.deleteObject(objectCode);
+        objectsApi.deleteObjectByCode(objectCode);
     }
 }

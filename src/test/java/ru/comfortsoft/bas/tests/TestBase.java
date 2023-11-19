@@ -7,6 +7,7 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import ru.comfortsoft.bas.api.objects.ObjectsApi;
 import ru.comfortsoft.bas.config.App;
 import ru.comfortsoft.bas.helpers.WebDriverProvider;
 import ru.comfortsoft.bas.helpers.Attach;
@@ -25,9 +26,10 @@ public class TestBase {
     protected final Header header = new Header();
     protected final MainPage mainPage = new MainPage();
     protected final ObjectsListPage objectsListPage = new ObjectsListPage();
-    protected final CreateObjectPage newObjectPage = new CreateObjectPage();
+    protected final CreateObjectPage createObjectPage = new CreateObjectPage();
     protected final ObjectViewPage objectViewPage = new ObjectViewPage();
     protected final SidebarFilter sidebarFilter = new SidebarFilter();
+    protected final ObjectsApi objectsApi = new ObjectsApi();
 
     @BeforeAll
     static void init() {

@@ -9,9 +9,13 @@ public class SidebarFilter {
     private final SelenideElement adressInput = $("#uo-address"),
             submitButton = $("p-button[ng-reflect-label='Найти']");
 
-    @Step("Set object address")
+    @Step("Set object address to {value}")
     public void setAddress(String value) {
         adressInput.setValue(value);
+    }
+
+    @Step("Click the submit button")
+    public void clickSubmitButton() {
         submitButton.click();
     }
 }
