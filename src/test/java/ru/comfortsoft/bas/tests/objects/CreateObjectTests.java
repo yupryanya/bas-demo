@@ -13,6 +13,7 @@ import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.tests.TestBase;
 import ru.comfortsoft.bas.utilities.RandomValues;
 
+@DisplayName("Create object tests")
 public class CreateObjectTests extends TestBase {
     @WithLogin
     @Test

@@ -10,7 +10,7 @@ import java.util.Random;
 public class RandomValues {
     private Locale locale = new Locale("ru-RU");
     private Faker faker = new Faker(locale);
-    Random random = new Random();
+    private Random random = new Random();
 
     public String generateRandomAddress() {
         return faker.address().fullAddress();

@@ -27,28 +27,33 @@ public class CreateObjectPage {
         objectCreatePage.isDisplayed();
     }
 
+    @Step("Set object type")
     public CreateObjectPage setObjectType(String value) {
         objectTypeInput.click();
         commonDropdown.$(byText(value)).click();
         return this;
     }
 
+    @Step("Set parent code for object")
     public CreateObjectPage setParentCode(String value) {
         parentCodeInput.click();
         commonDropdown.$(byText(value)).click();
         return this;
     }
 
+    @Step("Set obect type")
     public CreateObjectPage setAddress(String value) {
         addressInput.setValue(value);
         return this;
     }
 
+    @Step("Set object name")
     public CreateObjectPage setObjectName(String value) {
         objectNameInput.setValue(value);
         return this;
     }
 
+    @Step("Click Submit button")
     public void clickSubmitButton() {
         submitButton.click();
     }

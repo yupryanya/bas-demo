@@ -11,6 +11,7 @@ import ru.comfortsoft.bas.api.users.UserApi;
 import ru.comfortsoft.bas.config.App;
 import ru.comfortsoft.bas.tests.TestBase;
 
+@DisplayName("Login tests")
 public class LoginTests extends TestBase {
     @Test
     @DisplayName("Successful login to account with valid login and username")

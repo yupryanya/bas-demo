@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 
 public class SidebarFilter {
-    private final Calendar calendar = new Calendar();
     private final SelenideElement adressInput = $("#uo-address"),
             submitButton = $("p-button[ng-reflect-label='Найти']");
 

@@ -17,7 +17,7 @@ import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
 import ru.comfortsoft.bas.tests.TestBase;
 import ru.comfortsoft.bas.utilities.RandomValues;
 
-@DisplayName("Objects page tests")
+@DisplayName("Objects list tests")
 public class ObjectsListTests extends TestBase {
     private final ObjectsApi objectsApi = new ObjectsApi();
     RandomValues randomValues = new RandomValues();
