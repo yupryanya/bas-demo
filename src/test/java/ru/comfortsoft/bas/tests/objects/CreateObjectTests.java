@@ -42,11 +42,11 @@ public class CreateObjectTests extends TestBase {
         String objectName = "Наименование";
 
         newObjectPage.openPage();
-        newObjectPage.setObjectName(objectName)
-                .setAddress(objectAddress)
-                .setObjectType(objectType.getObjectTypeName())
-                .setParentCode(district.getDistrictName())
-                .clickSubmitButton();
+        newObjectPage.setObjectName(objectName);
+        newObjectPage.setAddress(objectAddress);
+        newObjectPage.setObjectType(objectType.getObjectTypeName());
+        newObjectPage.setParentCode(district.getDistrictName());
+        newObjectPage.clickSubmitButton();
         objectViewPage.objectWithRequiredFieldsisDisplayed(objectAddress, district.getDistrictName(), objectType.getObjectTypeName());
     }
 }
