@@ -21,6 +21,7 @@ public class LoginTests extends TestBase {
     void successfulLoginTest() {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
+        header.clickTheAlertMessage();
         header.openUserInfo();
         header.checkThatUserAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
     }
@@ -33,6 +34,7 @@ public class LoginTests extends TestBase {
     void sucessfulLogoutTest() {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
+        header.clickTheAlertMessage();
         header.checkThatUserAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
         header.signOut();
         loginPage.checkUserSignedOut();

@@ -1,8 +1,8 @@
 package ru.comfortsoft.bas.utilities;
 
 import com.github.javafaker.Faker;
-import ru.comfortsoft.bas.data.District;
-import ru.comfortsoft.bas.data.ObjectType;
+import ru.comfortsoft.bas.data.Districts;
+import ru.comfortsoft.bas.data.ObjectTypes;
 
 import java.util.Locale;
 import java.util.Random;
@@ -16,13 +16,13 @@ public class RandomData {
         return faker.address().streetAddress();
     }
 
-    public District getRandomDistrict() {
-        District[] values = District.values();
+    public Districts getRandomDistrict() {
+        Districts[] values = Districts.values();
         return values[random.nextInt(values.length)];
     }
 
-    public ObjectType getRandomObjectType() {
-        ObjectType[] objectTypes = ObjectType.values();
+    public ObjectTypes getRandomObjectType() {
+        ObjectTypes[] objectTypes = ObjectTypes.values();
         return objectTypes[random.nextInt(objectTypes.length)];
     }
 }

@@ -1,6 +1,6 @@
 package ru.comfortsoft.bas.data;
 
-public enum District {
+public enum Districts {
     ARBAT("0101", "Арбат"),
     AKADEMICHESKIY("0701", "Академический"),
     BASMANNYY("0102", "Басманный"),
@@ -8,7 +8,7 @@ public enum District {
     private final String code,
             name;
 
-    District(String code, String name) {
+    Districts(String code, String name) {
         this.code = code;
         this.name = name;
     }

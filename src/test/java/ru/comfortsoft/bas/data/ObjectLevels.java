@@ -1,6 +1,6 @@
 package ru.comfortsoft.bas.data;
 
-public enum ObjectLevel {
+public enum ObjectLevels {
     CITY("Город"),
     CITY_PART("Часть города"),
     OKRUG("Округ"),
@@ -8,7 +8,7 @@ public enum ObjectLevel {
     BUILDING("Здание/Сооружение");
     private final String levelNumber;
 
-    ObjectLevel(String levelNumber) {
+    ObjectLevels(String levelNumber) {
         this.levelNumber = levelNumber;
     }
 

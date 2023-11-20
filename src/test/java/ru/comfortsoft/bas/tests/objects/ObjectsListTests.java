@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import ru.comfortsoft.bas.data.MenuItems;
-import ru.comfortsoft.bas.data.ObjectLevel;
+import ru.comfortsoft.bas.data.ObjectLevels;
 import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
 import ru.comfortsoft.bas.tests.TestBase;
@@ -42,10 +42,10 @@ public class ObjectsListTests extends TestBase {
     @ParameterizedTest
     @DisplayName("Filter objects by level using 'Level' dropdown")
     @Tag("regress")
-    @EnumSource(ObjectLevel.class)
+    @EnumSource(ObjectLevels.class)
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
-    void successfulFilteringByLevelUsingUpperLevelFilterTest(ObjectLevel level) {
+    void successfulFilteringByLevelUsingUpperLevelFilterTest(ObjectLevels level) {
         objectsListPage.openPage();
         objectsListPage.setLevelFilterValue(level.getLevelName());
         objectsListPage.clickFirstElementInList();

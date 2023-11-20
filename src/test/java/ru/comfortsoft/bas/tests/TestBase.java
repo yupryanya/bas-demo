@@ -20,6 +20,7 @@ import ru.comfortsoft.bas.pages.objects.ObjectViewPage;
 import ru.comfortsoft.bas.pages.objects.ObjectsListPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
     protected final LoginPage loginPage = new LoginPage();

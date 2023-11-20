@@ -7,8 +7,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
-import ru.comfortsoft.bas.data.District;
-import ru.comfortsoft.bas.data.ObjectType;
+import ru.comfortsoft.bas.data.Districts;
+import ru.comfortsoft.bas.data.ObjectTypes;
 import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.tests.TestBase;
 import ru.comfortsoft.bas.utilities.RandomData;
@@ -36,8 +36,8 @@ public class CreateObjectTests extends TestBase {
     void successfulNewObjectCreationTest() {
         RandomData randomValues = new RandomData();
 
-        District district = randomValues.getRandomDistrict();
-        ObjectType objectType = randomValues.getRandomObjectType();
+        Districts district = randomValues.getRandomDistrict();
+        ObjectTypes objectType = randomValues.getRandomObjectType();
         String objectAddress = randomValues.generateRandomAddress();
         String objectName = "Наименование";
 
