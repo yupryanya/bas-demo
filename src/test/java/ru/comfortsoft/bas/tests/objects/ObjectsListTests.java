@@ -14,11 +14,11 @@ import ru.comfortsoft.bas.data.ObjectLevel;
 import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
 import ru.comfortsoft.bas.tests.TestBase;
-import ru.comfortsoft.bas.utilities.RandomValues;
+import ru.comfortsoft.bas.utilities.RandomData;
 
 @DisplayName("Objects list tests")
 public class ObjectsListTests extends TestBase {
-    RandomValues randomValues = new RandomValues();
+    RandomData randomValues = new RandomData();
     private final CreateObjectRequestModel object = CreateObjectRequestModel.builder()
             .objType(randomValues.getRandomObjectType().getObjectTypeCode())
             .address(randomValues.generateRandomAddress())

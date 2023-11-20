@@ -7,13 +7,13 @@ import ru.comfortsoft.bas.data.ObjectType;
 import java.util.Locale;
 import java.util.Random;
 
-public class RandomValues {
+public class RandomData {
     private Locale locale = new Locale("ru-RU");
     private Faker faker = new Faker(locale);
     private Random random = new Random();
 
     public String generateRandomAddress() {
-        return faker.address().fullAddress();
+        return faker.address().streetAddress();
     }
 
     public District getRandomDistrict() {

@@ -11,7 +11,7 @@ import ru.comfortsoft.bas.data.District;
 import ru.comfortsoft.bas.data.ObjectType;
 import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.tests.TestBase;
-import ru.comfortsoft.bas.utilities.RandomValues;
+import ru.comfortsoft.bas.utilities.RandomData;
 
 @DisplayName("Create object tests")
 public class CreateObjectTests extends TestBase {
@@ -34,7 +34,7 @@ public class CreateObjectTests extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Yulia Azovtseva")
     void successfulNewObjectCreationTest() {
-        RandomValues randomValues = new RandomValues();
+        RandomData randomValues = new RandomData();
 
         District district = randomValues.getRandomDistrict();
         ObjectType objectType = randomValues.getRandomObjectType();
@@ -48,7 +48,7 @@ public class CreateObjectTests extends TestBase {
         createObjectPage.setParentCode(district.getDistrictName());
         String objectCode = createObjectPage.getObjectCode();
         createObjectPage.clickSubmitButton();
-        objectViewPage.objectWithRequiredFieldsisDisplayed(objectAddress, district.getDistrictName(), objectType.getObjectTypeName());
+        objectViewPage.objectWithRequiredFieldsisDisplayed(objectCode, district.getDistrictName(), objectType.getObjectTypeName(), objectAddress);
 
         objectsApi.deleteObjectByCode(objectCode);
     }
@@ -60,7 +60,7 @@ public class CreateObjectTests extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Yulia Azovtseva")
     void newObjectCreationWithIncompleteRequiredFieldsTest() {
-        RandomValues randomValues = new RandomValues();
+        RandomData randomValues = new RandomData();
 
         String objectAddress = randomValues.generateRandomAddress();
         String objectName = "Наименование";
