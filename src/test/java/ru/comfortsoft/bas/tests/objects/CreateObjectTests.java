@@ -52,4 +52,24 @@ public class CreateObjectTests extends TestBase {
 
         objectsApi.deleteObjectByCode(objectCode);
     }
+
+    @WithLogin
+    @Test
+    @DisplayName("Create a new object with incomplete required fields")
+    @Tag("regress")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("Yulia Azovtseva")
+    void newObjectCreationWithIncompleteRequiredFieldsTest() {
+        RandomValues randomValues = new RandomValues();
+
+        String objectAddress = randomValues.generateRandomAddress();
+        String objectName = "Наименование";
+
+        createObjectPage.openPage();
+        createObjectPage.setObjectName(objectName);
+        createObjectPage.setAddress(objectAddress);
+        createObjectPage.clickSubmitButton();
+
+        createObjectPage.requiredFieldErrorMessageShouldBeDisplayed();
+    }
 }

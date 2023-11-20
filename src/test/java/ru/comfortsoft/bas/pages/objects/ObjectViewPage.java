@@ -10,7 +10,7 @@ public class ObjectViewPage {
     private final SelenideElement objectInformation = $(".common-info"),
                             objectCode = $("");
 
-    @Step("Check the object with {values} fields is displayed")
+    @Step("The object with {values} fields should be displayed")
     public void objectWithRequiredFieldsisDisplayed(String ... values) {
         for (String value : values) {
             objectInformation.shouldHave(text(value));

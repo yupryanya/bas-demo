@@ -14,7 +14,7 @@ import ru.comfortsoft.bas.tests.TestBase;
 @DisplayName("Login tests")
 public class LoginTests extends TestBase {
     @Test
-    @DisplayName("Successful login to account with valid login and username")
+    @DisplayName("Successful login with valid credentials")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.BLOCKER)
     @Owner("Yulia Azovtseva")
@@ -35,6 +35,17 @@ public class LoginTests extends TestBase {
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
         header.checkThatUserAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
         header.signOut();
+        loginPage.checkUserSignedOut();
+    }
+
+    @Test
+    @DisplayName("Login with an invalid password for valid username")
+    @Tag("regress")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("Yulia Azovtseva")
+    void unsuccessfulLoginWithInvalidPasswordTest() {
+        loginPage.openPage();
+        loginPage.signIn(App.authConfig.username(), "invalid_password");
         loginPage.checkUserSignedOut();
     }
 }

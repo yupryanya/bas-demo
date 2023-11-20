@@ -28,11 +28,11 @@ public class ObjectsListTests extends TestBase {
 
     @WithLogin
     @Test
-    @DisplayName("Open 'Objects' page from Main menu")
+    @DisplayName("Navigate to 'Objects' page from Main menu")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Yulia Azovtseva")
-    void successfulOpenObjectsPageFromMenuTest() {
+    void successfulOpenObjectsPageFromMainMenuTest() {
         mainPage.openPage();
         header.navigateTo(MenuItems.OBJECTS);
         objectsListPage.checkObjectsListPageIsDisplayed();
@@ -40,7 +40,7 @@ public class ObjectsListTests extends TestBase {
 
     @WithLogin
     @ParameterizedTest
-    @DisplayName("Filter objects using 'Level Filter' field")
+    @DisplayName("Filter objects by level using 'Level' dropdown")
     @Tag("regress")
     @EnumSource(ObjectLevel.class)
     @Severity(SeverityLevel.NORMAL)
@@ -50,6 +50,25 @@ public class ObjectsListTests extends TestBase {
         objectsListPage.setLevelFilterValue(level.getLevelName());
         objectsListPage.clickFirstElementInList();
         objectViewPage.objectWithRequiredFieldsisDisplayed(level.getLevelName());
+    }
+
+    @WithLogin
+    @Test
+    @DisplayName("Search by existing address using 'Sidebar Filter'")
+    @Tag("regress")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Yulia Azovtseva")
+    void successfulSearchByAddressUsingSidebarFilterTest() {
+        String objectCode = objectsApi.createObject(object).getCode();
+
+        objectsListPage.openPage();
+        objectsListPage.expandSidebarFilter();
+        sidebarFilter.setAddress(object.getAddress());
+        sidebarFilter.clickSubmitButton();
+        objectsListPage.clickFirstElementInList();
+        objectViewPage.objectWithRequiredFieldsisDisplayed(object.getAddress());
+
+        objectsApi.deleteObjectByCode(objectCode);
     }
 
     @WithLogin
@@ -71,20 +90,13 @@ public class ObjectsListTests extends TestBase {
 
     @WithLogin
     @Test
-    @DisplayName("Search by existing address using 'Sidebar Filter'")
+    @DisplayName("Search by non existing address using upper 'Main Search' field")
     @Tag("regress")
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
-    void successfulSearchByAddressUsingSidebarFilterTest() {
-        String objectCode = objectsApi.createObject(object).getCode();
-
+    void unsuccessfulSearchByAddressUsingTheMainSearchTest() {
         objectsListPage.openPage();
-        objectsListPage.openSidebarFilter();
-        sidebarFilter.setAddress(object.getAddress());
-        sidebarFilter.clickSubmitButton();
-        objectsListPage.clickFirstElementInList();
-        objectViewPage.objectWithRequiredFieldsisDisplayed(object.getAddress());
-
-        objectsApi.deleteObjectByCode(objectCode);
+        objectsListPage.fillTheMainSearchField("some address");
+        objectsListPage.noObjectsFoundMessageShouldBeDisplayed();
     }
 }

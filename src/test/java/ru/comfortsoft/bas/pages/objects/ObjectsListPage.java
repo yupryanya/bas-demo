@@ -1,13 +1,16 @@
 package ru.comfortsoft.bas.pages.objects;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ObjectsListPage {
+    private final String NO_OBJECTS_MESSAGE = "Записей не найдено";
     private final SelenideElement sidebarFilterButton = $("button[aria-controls='collapseFilter']"),
             searchInput = $("input[type='search']"),
             mainSearchSubmitButton = $("button[type='submit']"),
@@ -22,13 +25,13 @@ public class ObjectsListPage {
         open("/objects");
     }
 
-    @Step("Check 'Objects' form is displayed")
+    @Step("The 'Objects' form should be displayed")
     public void checkObjectsListPageIsDisplayed() {
         objectsListPage.isDisplayed();
     }
 
-    @Step("Open Sidebar filter")
-    public void openSidebarFilter() {
+    @Step("Expand the Sidebar filter using button")
+    public void expandSidebarFilter() {
         sidebarFilterButton.click();
     }
 
@@ -52,5 +55,10 @@ public class ObjectsListPage {
     @Step("Cick the first element in objects list")
     public void clickFirstElementInList() {
         elementsList.$("a").click();
+    }
+
+    @Step("No objects found message should be displayed")
+    public void noObjectsFoundMessageShouldBeDisplayed() {
+        elementsList.shouldHave(text(NO_OBJECTS_MESSAGE));
     }
 }
