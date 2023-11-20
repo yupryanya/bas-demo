@@ -30,12 +30,12 @@ public class ObjectsListPage {
         objectsListPage.isDisplayed();
     }
 
-    @Step("Expand the Sidebar filter using button")
+    @Step("Expand the 'Sidebar filter' using button")
     public void expandSidebarFilter() {
         sidebarFilterButton.click();
     }
 
-    @Step("Find object {value} with the upper 'Main search' field")
+    @Step("Fill the upper 'Main search' field with '{value}'")
     public void fillTheMainSearchField(String value) {
         searchInput.setValue(value);
         mainSearchSubmitButton.click();
@@ -46,18 +46,18 @@ public class ObjectsListPage {
         addObjectButton.click();
     }
 
-    @Step("Set upper 'Level Filter' value to {value}")
+    @Step("Set upper 'Level Filter' value to '{value}'")
     public void setLevelFilterValue(String value) {
         levelFilter.click();
         levelFilterDropdown.$(byText(value)).click();
     }
 
-    @Step("Cick the first element in objects list")
+    @Step("Click the first element in objects list")
     public void clickFirstElementInList() {
         elementsList.$("a").click();
     }
 
-    @Step("No objects found message should be displayed")
+    @Step("'No objects found' message should be displayed")
     public void noObjectsFoundMessageShouldBeDisplayed() {
         elementsList.shouldHave(text(NO_OBJECTS_MESSAGE));
     }

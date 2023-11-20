@@ -8,7 +8,6 @@ import static ru.comfortsoft.bas.specs.BaseSpec.*;
 
 public class LoginApi {
     public static String getSessionIdCookie() {
-
         return given(defaultRequestSpec)
                 .when()
                 .contentType(ContentType.URLENC)

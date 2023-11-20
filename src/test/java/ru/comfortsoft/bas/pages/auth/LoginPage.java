@@ -20,14 +20,14 @@ public class LoginPage {
         Selenide.open("/auth/login");
     }
 
-    @Step("Log in to account")
+    @Step("Log in to account with username '{username}'")
     public void signIn(String username, String password) {
         usernameInput.setValue(username);
         passwordInput.setValue(password);
         submitButton.click();
     }
 
-    @Step("Verify user successfully signed out")
+    @Step("Guest page should be displayed")
     public void checkUserSignedOut() {
         guestPageText.shouldHave(text(GUEST_TEXT));
     }

@@ -26,38 +26,38 @@ public class CreateObjectPage {
         return this;
     }
 
-    @Step("The 'New Objects' form should be displayed")
+    @Step("The 'New Object' form should be displayed")
     public void checkTheNewObjectFormIsVisible() {
         objectCreatePage.isDisplayed();
     }
 
-    @Step("Set object type to {value}")
+    @Step("Set object type to '{value}'")
     public CreateObjectPage setObjectType(String value) {
         objectTypeInput.click();
         commonDropdown.$(byText(value)).click();
         return this;
     }
 
-    @Step("Set parent code for object to {value}")
+    @Step("Set object parent to '{value}'")
     public CreateObjectPage setParentCode(String value) {
         parentCodeInput.click();
         commonDropdown.$(byText(value)).click();
         return this;
     }
 
-    @Step("Set obect type to {value}")
+    @Step("Fill the object address field with '{value}'")
     public CreateObjectPage setAddress(String value) {
         addressInput.setValue(value);
         return this;
     }
 
-    @Step("Set object name to {value}")
+    @Step("Fill the object name field with '{value}'")
     public CreateObjectPage setObjectName(String value) {
         nameInput.setValue(value);
         return this;
     }
 
-    @Step("Click Sidebar Filter Submit button")
+    @Step("Click the Submit button")
     public void clickSubmitButton() {
         submitButton.click();
     }
