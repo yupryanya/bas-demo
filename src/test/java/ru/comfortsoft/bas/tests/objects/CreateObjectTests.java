@@ -14,8 +14,8 @@ import ru.comfortsoft.bas.utilities.RandomData;
 public class CreateObjectTests extends TestBase {
     RandomData randomValues = new RandomData();
 
-    @WithLogin
     @Test
+    @WithLogin
     @DisplayName("Open 'New object' form from Objects page")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.CRITICAL)
@@ -26,8 +26,8 @@ public class CreateObjectTests extends TestBase {
         createObjectPage.newObjectFormIsDisplayed();
     }
 
-    @WithLogin
     @Test
+    @WithLogin
     @DisplayName("Create a new object with all required fields properly filled")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.CRITICAL)
@@ -50,8 +50,8 @@ public class CreateObjectTests extends TestBase {
         objectsApi.deleteObjectByCode(objectCode);
     }
 
-    @WithLogin
     @Test
+    @WithLogin
     @DisplayName("Create a new object with incomplete required fields")
     @Tag("regress")
     @Severity(SeverityLevel.CRITICAL)

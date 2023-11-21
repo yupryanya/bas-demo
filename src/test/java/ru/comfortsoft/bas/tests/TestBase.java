@@ -1,5 +1,6 @@
 package ru.comfortsoft.bas.tests;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 
 import io.qameta.allure.selenide.AllureSelenide;
@@ -19,7 +20,7 @@ import ru.comfortsoft.bas.pages.objects.CreateObjectPage;
 import ru.comfortsoft.bas.pages.objects.ObjectViewPage;
 import ru.comfortsoft.bas.pages.objects.ObjectsListPage;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestBase {
     protected final LoginPage loginPage = new LoginPage();
@@ -50,6 +51,8 @@ public class TestBase {
         if (App.appConfig.isRemote()) {
             Attach.addVideo();
         }
+        clearBrowserCookies();
+        clearBrowserLocalStorage();
         closeWebDriver();
     }
 }

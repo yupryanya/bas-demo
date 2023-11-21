@@ -21,11 +21,6 @@ public class Header {
         mainMenu.find(byText(menuItem.getDisplayedName())).click();
     }
 
-    @Step("Open authorized user info")
-    public void openUserInfo() {
-        userInfoButton.click();
-    }
-
     @Step("Sign out from account")
     public void signOut() {
         userInfoButton.click();

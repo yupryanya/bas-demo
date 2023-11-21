@@ -23,8 +23,8 @@ public class ObjectsListTests extends TestBase {
             .parentCode(randomValues.getRandomDistrict().getCode())
             .build();
 
-    @WithLogin
     @Test
+    @WithLogin
     @DisplayName("Navigate to 'Objects' page from Main menu")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.CRITICAL)
@@ -35,11 +35,11 @@ public class ObjectsListTests extends TestBase {
         objectsListPage.objectsListPageIsDisplayed();
     }
 
-    @WithLogin
     @ParameterizedTest
+    @EnumSource(ObjectLevels.class)
+    @WithLogin
     @DisplayName("Filter objects by level using 'Level' dropdown")
     @Tag("regress")
-    @EnumSource(ObjectLevels.class)
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
     void successfulFilteringByLevelUsingUpperLevelFilterTest(ObjectLevels level) {
@@ -49,8 +49,8 @@ public class ObjectsListTests extends TestBase {
         objectViewPage.objectWithRequiredFieldsisDisplayed(level.getLevelName());
     }
 
-    @WithLogin
     @Test
+    @WithLogin
     @DisplayName("Search by existing address using the 'Sidebar Filter'")
     @Tag("regress")
     @Severity(SeverityLevel.NORMAL)
@@ -67,8 +67,8 @@ public class ObjectsListTests extends TestBase {
         objectsApi.deleteObjectByCode(objectCode);
     }
 
-    @WithLogin
     @Test
+    @WithLogin
     @DisplayName("Search by existing address using the upper 'Main Search' field")
     @Tag("regress")
     @Severity(SeverityLevel.NORMAL)
@@ -83,8 +83,8 @@ public class ObjectsListTests extends TestBase {
         objectsApi.deleteObjectByCode(objectCode);
     }
 
-    @WithLogin
     @Test
+    @WithLogin
     @DisplayName("Search by a non-existing address using the upper 'Main Search' field")
     @Tag("regress")
     @Severity(SeverityLevel.NORMAL)

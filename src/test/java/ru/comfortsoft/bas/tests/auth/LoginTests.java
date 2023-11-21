@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import ru.comfortsoft.bas.api.users.UserApi;
 import ru.comfortsoft.bas.config.App;
+import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.tests.TestBase;
 
 @DisplayName("Login tests")
@@ -21,18 +22,17 @@ public class LoginTests extends TestBase {
     void successfulLoginTest() {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
-        header.openUserInfo();
         header.userIsAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
     }
 
     @Test
+    @WithLogin
     @DisplayName("Successful user sign-out")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Yulia Azovtseva")
     void sucessfulLogoutTest() {
         loginPage.openPage();
-        loginPage.signIn(App.authConfig.username(), App.authConfig.password());
         header.userIsAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
         header.signOut();
         loginPage.guestPageIsDisplayed();
