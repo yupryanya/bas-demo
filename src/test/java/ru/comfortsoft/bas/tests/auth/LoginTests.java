@@ -14,14 +14,13 @@ import ru.comfortsoft.bas.tests.TestBase;
 @DisplayName("Login tests")
 public class LoginTests extends TestBase {
     @Test
-    @DisplayName("Successful login with valid credentials")
+    @DisplayName("Authenticate successfully with valid credentials")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.BLOCKER)
     @Owner("Yulia Azovtseva")
     void successfulLoginTest() {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
-        header.clickTheAlertMessage();
         header.openUserInfo();
         header.checkThatUserAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
     }
@@ -34,14 +33,13 @@ public class LoginTests extends TestBase {
     void sucessfulLogoutTest() {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
-        header.clickTheAlertMessage();
         header.checkThatUserAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
         header.signOut();
         loginPage.checkUserSignedOut();
     }
 
     @Test
-    @DisplayName("Login with an invalid password for valid username")
+    @DisplayName("Attempt login with an invalid password for a valid username")
     @Tag("regress")
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Yulia Azovtseva")

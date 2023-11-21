@@ -3,10 +3,7 @@ package ru.comfortsoft.bas.tests.objects;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.comfortsoft.bas.data.Districts;
 import ru.comfortsoft.bas.data.ObjectTypes;
 import ru.comfortsoft.bas.helpers.WithLogin;
@@ -15,6 +12,8 @@ import ru.comfortsoft.bas.utilities.RandomData;
 
 @DisplayName("Create object tests")
 public class CreateObjectTests extends TestBase {
+    RandomData randomValues = new RandomData();
+
     @WithLogin
     @Test
     @DisplayName("Open 'New object' form from Objects page")
@@ -29,13 +28,11 @@ public class CreateObjectTests extends TestBase {
 
     @WithLogin
     @Test
-    @DisplayName("Create a new object with all required fields filled")
+    @DisplayName("Create a new object with all required fields properly filled")
     @Tags({@Tag("smoke"), @Tag("regress")})
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Yulia Azovtseva")
     void successfulNewObjectCreationTest() {
-        RandomData randomValues = new RandomData();
-
         Districts district = randomValues.getRandomDistrict();
         ObjectTypes objectType = randomValues.getRandomObjectType();
         String objectAddress = randomValues.generateRandomAddress();
@@ -60,8 +57,6 @@ public class CreateObjectTests extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Owner("Yulia Azovtseva")
     void newObjectCreationWithIncompleteRequiredFieldsTest() {
-        RandomData randomValues = new RandomData();
-
         String objectAddress = randomValues.generateRandomAddress();
         String objectName = "Наименование";
 
@@ -69,7 +64,6 @@ public class CreateObjectTests extends TestBase {
         createObjectPage.setObjectName(objectName);
         createObjectPage.setAddress(objectAddress);
         createObjectPage.clickSubmitButton();
-
         createObjectPage.requiredFieldErrorMessageShouldBeDisplayed();
     }
 }

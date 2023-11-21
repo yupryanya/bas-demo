@@ -17,7 +17,7 @@ public class Header {
             alertMessage = $(".toast-container");
     ;
 
-    @Step("Navigate to {menuItem} page from Main menu")
+    @Step("Navigate to '{menuItem}' page from Main menu")
     public void navigateTo(MenuItems menuItem) {
         mainMenu.find(byText(menuItem.getDisplayedName())).click();
     }
@@ -33,14 +33,9 @@ public class Header {
         logoutButton.click();
     }
 
-    @Step("Check user authorized as {username}")
+    @Step("Check user authorized as '{username}'")
     public void checkThatUserAuthorizedAs(String username) {
         userInfoButton.click();
         userInfoContainer.shouldHave(text(username));
-    }
-
-    @Step("Click the alert message to close it")
-    public void clickTheAlertMessage() {
-        alertMessage.click();
     }
 }

@@ -1,20 +1,18 @@
+### <a name="about-system"></a>About
+
+Welcome to my demo Java test automation project. This project is designed for a web-based client-server analytics system. The system deals with data related to buildings and other objects of the urban environment.
+
+- [Technologies and Tools](#tech-and-instruments)
+- [Test Cases ](#tests)
+- [Running Tests from Jenkins](#how-to-run)
+- [Allure Report](#allure-report)
+- [Report Artefacts](#test-artefacts)
+- [Integration with Allure TestOps](#allure-test-ops)
+- [Integration with Jira](#jira)
+- [Allure Notifications](#telegram-notification)
 
 
-### <a name="Содержание"></a>Содержание
-
-- [О системе](#about-system)
-- [Использованные технологии и инструменты](#tech-and-instruments)
-- [Реализованные проверки](#tests)
-- [Удаленный запуск в CI](#how-to-run)
-- [Allure-отчет о результатах прохождения автотестов](#allure-report)
-- [Тестовые артефакты](#test-artefacts)
-- [Интеграция с системой тест-менеджмента Allure TestOps](#allure-test-ops)
-- [Интеграция с Jira](#jira)
-- [Уведомление о прохождении тестов в мессенджере](#telegram-notification)
-
-### <a name="about-system"></a>О системе
-
-### <a name="tech-and-instruments"></a>Использованные технологии и инструменты
+### <a name="tech-and-instruments"></a>Technologies and Tools
 
 <p>
 <img width="6%" title="Java" src="media/svg/java.svg">
@@ -31,68 +29,80 @@
 <img width="6%" title="Jira" src="media/svg/jira.svg">
 </p>
 
-`Intelij IDEA` для написания кода и работы с `Git`\
-`Gradle` для автоматизации сборки\
-`JUnit5` для выполнения тестов\
-`Selenide` для ускорения разработки на базе `Selenium WebDriver`\
-`REST Assured` для тестирования API\
-`GitHub` для хранения кода\
-`Jenkins` для запуска тестов удаленно\
-`Selenoid` для запуска браузера в `Docker` контейнерах\
-`Allure Report` для визуализации результатов тестирования\
-`Allure TestOps` для управления тестированием\
-`Jira` для таск менеджмента\
-`Telegram` для уведомлений о результатах тестирования
+`IntelliJ IDEA` for code writing and as a `Git` tool\
+`Gradle` for build automation\
+`JUnit5` for test execution\
+`Selenide` for accelerated development based on `Selenium WebDriver`\
+`REST Assured` for API testing\
+`GitHub` for code storage\
+`Jenkins` for remote test execution\
+`Selenoid` for running browsers in `Docker` containers\
+`Allure Report` for visualizing test results\
+`Allure TestOps` for test management\
+`Jira` for task management\
+`Telegram` for test result notifications
 
-### <a name="tests"></a>Реализованные проверки
+### <a name="tests"></a>Automated Test Cases
 
-Реализованы проверки для страницы "Объекты"
-1. Вызов формы создания нового объекта из окна "Объекты"
-2. Поиск объекта по существующему адресу с помощью основного поля поиска
-3. Поиск объекта по существующему адресу с помощью бокового фильтра"
-4. Фильтрация списка объектов с помощью фильтра по уровню
-5. Создание нового объекта с помощью формы создания объекта с заполненными обязательными полями
+Login tests
+1. Authenticate successfully with valid credentials
+2. Successful user sign-out
+3. Login with an invalid password for valid username
 
-### <a name="how-to-run"></a>Удаленный запуск в CI
+Objects list tests
+1. Navigate to 'Objects' page from Main menu
+2. Filter objects by level using 'Level' dropdown
+2. Search by existing address using the upper 'Main Search' field
+3. Search by existing address using the 'Sidebar Filter'
+4. Search by a non-existing address using the upper 'Main Search' field
 
-Настроена задача для запуска автотестов с параметрами в Jenkins.
+Create new object tests
+1. Open 'New object' form from Objects page
+2. Create a new object with all required fields properly filled
+3. Create a new object with incomplete required fields
+
+### <a name="how-to-run"></a>Running Tests from Jenkins
+
+A task has been configured to run autotests with parameters in Jenkins.
 <p>
 <img width="88%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
 </p>
 
-Результат сборки.
+Once the job is complete, you can get a summary of the test run and access the Allure report.
 <p>
 <img width="88%" title="Jenkins job results" src="media/screens/jenkins-job.png">
 </p>
 
-### <a name="allure-report"></a>Allure-отчет о результатах прохождения автотестов
-После прохождения тестов, получаем графическое представление результатов. 
-Каждый тест отображается в отчете в виде понятных шагов.
+### <a name="allure-report"></a>Allure Report
+
+After the tests have passed, a graphical representation of the results is generated. Each test is presented in the report as a series of steps with readable names.
 <p>
 <img width="88%" title="Allure report test steps" src="media/screens/allure_report_with_steps.png">
 </p>
 
-### <a name="test-artefacts"></a>Тестовые артефакты
-В Allure-отчете сохраняется подробная информация, включая снапшоты, скриншоты и записи экрана для разбора упавших тестов.
+### <a name="test-artefacts"></a>Report Artefacts
+Detailed information, including snapshots, screenshots, and screen recordings for analyzing failed tests, is saved in the Allure Report.
 <p>
 <img width="88%" title="Allure report artefacts" src="media/screens/allure_report_with_screenshots.png">
 </p>
 
-### <a name="allure-test-ops"></a>Интеграция с системой тест-менеджмента Allure TestOps
-Ручные и автоматизированные проверки объединены в один тест сьют. 
+//TO DO: video
+
+### <a name="allure-test-ops"></a>Integration with Allure TestOps
+The integration between Jenkins and Allure works seamlessly in both directions. Test results are collected in real-time from the build server during the execution of the build job. Additionally, tests can be initiated directly from the Allure interface.
+Manual and automated checks are combined into one test suite. 
 <p>
 <img width="88%" title="Allure TestOps integration" src="media/screens/allure_testops_suite.png">
 </p>
 
-### <a name="jira"></a>Интеграция с Jira
-В тикет Jira добавлены тесты из Allure TestOps.
+### <a name="jira"></a>Integration with Jira
+The Jira ticket is linked with tests from Allure TestOps.
 <p>
 <img width="88%" title="Allure TestOps integration" src="media/screens/jira_integration.png">
 </p>
 
-### <a name="telegram-notification"></a>Уведомления о прохождении тестов в мессенджере  
-С помощью библиотеки Allure notifications отправлено автоматическое оповещение о результатах прохождения автотестов в Telegram (Slack, Skype, Email, Mattermost, Discord, Loop).
+### <a name="telegram-notification"></a>Allure Notifications 
+Using the Allure notifications library, automatic notifications about the test results are sent to Telegram (also works with Slack, Skype, Email, Mattermost, Discord, Loop).
 <p>
 <img width="30%" title="Telegram notifications" src="media/screens/telegram_report.png">
 </p>
-
