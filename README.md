@@ -47,7 +47,8 @@ Welcome to my demo Java test automation project. This project is designed for a 
 Login tests
 1. Authenticate successfully with valid credentials
 2. Successful user sign-out
-3. Login with an invalid password for valid username
+3. Attempt login with empty password and username
+4. Attempt login with an invalid password for a valid username
 
 Objects list tests
 1. Navigate to 'Objects' page from Main menu
