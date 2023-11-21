@@ -7,8 +7,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ObjectViewPage {
-    private final SelenideElement objectInformation = $(".common-info"),
-                            objectCode = $("");
+    private final SelenideElement objectInformation = $(".common-info");
 
     @Step("The object with {values} fields should be displayed")
     public void objectWithRequiredFieldsisDisplayed(String ... values) {

@@ -8,7 +8,6 @@ import static ru.comfortsoft.bas.config.App.appConfig;
 
 public class WebDriverProvider {
         public static void webDriverConfigInit() {
-           // pageLoadStrategy = "eager";
             baseUrl = appConfig.webUrl();
             browser = appConfig.browser();
             browserVersion = appConfig.browserVersion();

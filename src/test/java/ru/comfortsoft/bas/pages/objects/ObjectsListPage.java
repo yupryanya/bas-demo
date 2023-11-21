@@ -1,6 +1,5 @@
 package ru.comfortsoft.bas.pages.objects;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 

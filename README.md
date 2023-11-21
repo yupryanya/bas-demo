@@ -42,7 +42,7 @@ Welcome to my demo Java test automation project. This project is designed for a 
 `Jira` for task management\
 `Telegram` for test result notifications
 
-### <a name="tests"></a>Automated Test Cases
+### <a name="tests"></a>Test Cases
 
 Login tests
 1. Authenticate successfully with valid credentials
