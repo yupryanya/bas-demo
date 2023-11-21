@@ -33,7 +33,7 @@ public class Header {
     }
 
     @Step("Check user authorized as '{username}'")
-    public void checkThatUserAuthorizedAs(String username) {
+    public void userIsAuthorizedAs(String username) {
         userInfoButton.click();
         userInfoContainer.shouldHave(text(username));
     }

@@ -32,7 +32,7 @@ public class ObjectsListTests extends TestBase {
     void successfulOpenObjectsPageFromMainMenuTest() {
         mainPage.openPage();
         header.navigateTo(MenuItems.OBJECTS);
-        objectsListPage.checkObjectsListPageIsDisplayed();
+        objectsListPage.objectsListPageIsDisplayed();
     }
 
     @WithLogin
@@ -62,8 +62,7 @@ public class ObjectsListTests extends TestBase {
         objectsListPage.expandSidebarFilter();
         sidebarFilter.setAddress(object.getAddress());
         sidebarFilter.clickSubmitButton();
-        objectsListPage.clickFirstElementInList();
-        objectViewPage.objectWithRequiredFieldsisDisplayed(object.getAddress());
+        objectsListPage.valueIsDisplayedInObjectsList(object.getAddress());
 
         objectsApi.deleteObjectByCode(objectCode);
     }
@@ -79,8 +78,7 @@ public class ObjectsListTests extends TestBase {
 
         objectsListPage.openPage();
         objectsListPage.fillTheMainSearchField(object.getAddress());
-        objectsListPage.clickFirstElementInList();
-        objectViewPage.objectWithRequiredFieldsisDisplayed(object.getAddress());
+        objectsListPage.valueIsDisplayedInObjectsList(object.getAddress());
 
         objectsApi.deleteObjectByCode(objectCode);
     }
@@ -94,6 +92,6 @@ public class ObjectsListTests extends TestBase {
     void unsuccessfulSearchByAddressUsingTheMainSearchTest() {
         objectsListPage.openPage();
         objectsListPage.fillTheMainSearchField("some address");
-        objectsListPage.noObjectsFoundMessageShouldBeDisplayed();
+        objectsListPage.noObjectsFoundMessageIsDisplayed();
     }
 }

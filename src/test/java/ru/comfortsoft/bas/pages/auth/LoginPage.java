@@ -32,7 +32,7 @@ public class LoginPage {
         submitButton.click();
     }
     @Step("Guest page should be displayed")
-    public void checkUserSignedOut() {
+    public void guestPageIsDisplayed() {
         guestPageText.shouldHave(text(GUEST_TEXT));
     }
 }

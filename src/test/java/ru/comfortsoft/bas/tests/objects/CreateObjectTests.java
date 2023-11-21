@@ -23,7 +23,7 @@ public class CreateObjectTests extends TestBase {
     void successfulNewObjectFormOpenTest() {
         objectsListPage.openPage();
         objectsListPage.clickNewObjectButton();
-        createObjectPage.checkTheNewObjectFormIsVisible();
+        createObjectPage.newObjectFormIsDisplayed();
     }
 
     @WithLogin
@@ -64,6 +64,6 @@ public class CreateObjectTests extends TestBase {
         createObjectPage.setObjectName(objectName);
         createObjectPage.setAddress(objectAddress);
         createObjectPage.clickSubmitButton();
-        createObjectPage.requiredFieldErrorMessageShouldBeDisplayed();
+        createObjectPage.requiredFieldErrorMessageIsDisplayed();
     }
 }

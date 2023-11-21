@@ -22,7 +22,7 @@ public class LoginTests extends TestBase {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
         header.openUserInfo();
-        header.checkThatUserAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
+        header.userIsAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
     }
 
     @Test
@@ -33,9 +33,9 @@ public class LoginTests extends TestBase {
     void sucessfulLogoutTest() {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), App.authConfig.password());
-        header.checkThatUserAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
+        header.userIsAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
         header.signOut();
-        loginPage.checkUserSignedOut();
+        loginPage.guestPageIsDisplayed();
     }
 
     @Test
@@ -46,6 +46,6 @@ public class LoginTests extends TestBase {
     void unsuccessfulLoginWithInvalidPasswordTest() {
         loginPage.openPage();
         loginPage.signIn(App.authConfig.username(), "invalid_password");
-        loginPage.checkUserSignedOut();
+        loginPage.guestPageIsDisplayed();
     }
 }

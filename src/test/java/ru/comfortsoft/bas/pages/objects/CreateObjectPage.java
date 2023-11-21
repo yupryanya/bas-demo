@@ -27,7 +27,7 @@ public class CreateObjectPage {
     }
 
     @Step("The 'New Object' form should be displayed")
-    public void checkTheNewObjectFormIsVisible() {
+    public void newObjectFormIsDisplayed() {
         objectCreatePage.isDisplayed();
     }
 
@@ -68,7 +68,7 @@ public class CreateObjectPage {
     }
 
     @Step("The required field error message should be displayed")
-    public void requiredFieldErrorMessageShouldBeDisplayed() {
+    public void requiredFieldErrorMessageIsDisplayed() {
         objectEditForm.shouldHave(text(REQUIRED_MESSAGE));
     }
 }

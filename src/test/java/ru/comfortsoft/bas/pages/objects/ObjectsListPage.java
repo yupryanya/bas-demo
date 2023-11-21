@@ -24,12 +24,12 @@ public class ObjectsListPage {
         open("/objects");
     }
 
-    @Step("The 'Objects' form should be displayed")
-    public void checkObjectsListPageIsDisplayed() {
+    @Step("The 'Objects' page should be displayed")
+    public void objectsListPageIsDisplayed() {
         objectsListPage.isDisplayed();
     }
 
-    @Step("Expand the 'Sidebar filter' using button")
+    @Step("Expand the 'Sidebar filter' using filter button")
     public void expandSidebarFilter() {
         sidebarFilterButton.click();
     }
@@ -40,7 +40,7 @@ public class ObjectsListPage {
         mainSearchSubmitButton.click();
     }
 
-    @Step("Click 'New Object' button")
+    @Step("Click the 'New Object' button")
     public void clickNewObjectButton() {
         addObjectButton.click();
     }
@@ -57,7 +57,12 @@ public class ObjectsListPage {
     }
 
     @Step("'No objects found' message should be displayed")
-    public void noObjectsFoundMessageShouldBeDisplayed() {
+    public void noObjectsFoundMessageIsDisplayed() {
         elementsList.shouldHave(text(NO_OBJECTS_MESSAGE));
+    }
+
+    @Step("'No objects found' message should be displayed")
+    public void valueIsDisplayedInObjectsList(String value) {
+        elementsList.shouldHave(text(value));
     }
 }
