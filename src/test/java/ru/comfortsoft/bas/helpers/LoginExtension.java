@@ -1,6 +1,7 @@
 package ru.comfortsoft.bas.helpers;
 
 import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.BeforeTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.Cookie;
 import ru.comfortsoft.bas.api.auth.LoginApi;
