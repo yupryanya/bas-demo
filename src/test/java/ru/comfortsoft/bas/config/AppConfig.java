@@ -12,7 +12,7 @@ public interface AppConfig extends Config {
     String browser();
 
     @Key("browserVersion")
-    @DefaultValue("117")
+    @DefaultValue("114")
     String browserVersion();
 
     @Key("browserSize")

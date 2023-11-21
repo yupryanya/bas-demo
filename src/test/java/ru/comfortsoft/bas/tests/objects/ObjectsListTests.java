@@ -15,7 +15,7 @@ import ru.comfortsoft.bas.utilities.RandomData;
 
 @DisplayName("Objects list tests")
 public class ObjectsListTests extends TestBase {
-    RandomData randomValues = new RandomData();
+    private RandomData randomValues = new RandomData();
     private final CreateObjectRequestModel object = CreateObjectRequestModel.builder()
             .objType(randomValues.getRandomObjectType().getObjectTypeCode())
             .address(randomValues.generateRandomAddress())

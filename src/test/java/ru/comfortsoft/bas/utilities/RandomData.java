@@ -8,9 +8,9 @@ import java.util.Locale;
 import java.util.Random;
 
 public class RandomData {
-    private Locale locale = new Locale("ru-RU");
-    private Faker faker = new Faker(locale);
-    private Random random = new Random();
+    private final Locale locale = new Locale("ru-RU");
+    private final Faker faker = new Faker(locale);
+    private final Random random = new Random();
 
     public String generateRandomAddress() {
         return faker.address().streetAddress();

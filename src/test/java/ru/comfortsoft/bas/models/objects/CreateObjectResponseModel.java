@@ -1,6 +1,5 @@
 package ru.comfortsoft.bas.models.objects;
 
-import io.qameta.allure.internal.shadowed.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.List;

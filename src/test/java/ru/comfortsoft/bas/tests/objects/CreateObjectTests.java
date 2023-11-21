@@ -12,7 +12,7 @@ import ru.comfortsoft.bas.utilities.RandomData;
 
 @DisplayName("Create object tests")
 public class CreateObjectTests extends TestBase {
-    RandomData randomValues = new RandomData();
+    private RandomData randomValues = new RandomData();
 
     @Test
     @WithLogin
