@@ -49,8 +49,7 @@ Welcome to my demo Java test automation project designed for a web-based client-
 Login tests
 1. Authenticate successfully with valid credentials
 2. Successful user sign-out
-3. Attempt login with empty password and username
-4. Attempt login with an invalid password for a valid username
+3. Attempt login with an invalid password for a valid username
 
 Objects list tests
 1. Navigate to 'Objects' page from Main menu
@@ -68,9 +67,25 @@ Create new object tests
 
 ----
 
+Launch parameters are stored in .properties files. To run tests, you can use the commands:
+
+For running locally (regress or smoke tests):
+
+```commandline
+ gradle clean regress -Denv=local
+```
+
+For remote browser execution
+
+```commandline
+ gradle clean smoke -Denv=local
+```
+
+----
+
 ### <a name="how-to-run"></a>Running Tests from Jenkins
 
-A task has been configured to run autotests with parameters in Jenkins.
+A task has been configured to run autotests with parameters in [Jenkins](https://jenkins.autotests.cloud/job/021-azovceva-bas-demo-project/).
 <p>
 <img width="88%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
 </p>
@@ -86,7 +101,8 @@ Once the job is complete, you can get a summary of the test run and access the A
 
 ### <a name="allure-report"></a>Allure Report
 
-After the tests have passed, a graphical representation of the results is generated. Each test is presented in the report as a series of steps with readable names.
+After the tests have passed, [Allure Report](https://jenkins.autotests.cloud/job/021-azovceva-bas-demo-project/allure/) is generated.
+Each test is presented in the report as a series of steps with readable names.
 
 <p>
 <img width="88%" title="Allure report test steps" src="media/screens/allure_report_with_steps.png">
