@@ -114,7 +114,7 @@ Each test is presented in the report as a series of steps with readable names.
 ----
 
 ### <a name="test-artefacts"></a>Report Artefacts
-Detailed information, including snapshots, screenshots, and screen recordings for analyzing failed tests, is saved in the Allure Report.
+Detailed information, including snapshots, screenshots, and screen recordings for analyzing failed tests, is saved in the Report.
 
 <p>
 <img width="88%" title="Allure report artefacts" src="media/screens/allure_report_with_screenshots.png">
