@@ -81,7 +81,7 @@ For running locally:
 For remote browser execution in Selenoid:
 
 ```commandline
- gradle clean smoke -Denv=local
+ gradle clean smoke -Denv=remote
 ```
 
 From Jenkins:
