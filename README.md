@@ -1,12 +1,12 @@
 ### <a name="about-system"></a>About
 
-Welcome to my demo Java test automation project designed for a web-based client-server analytics system. This system handles data related to buildings and other objects in the urban environment.
+Welcome to my demo Java test automation project designed for a web-based client-server analytics system. This system handles data related to buildings and other objects of the urban environment.
 
 ### Contents
 
 - [Technologies and Tools](#tech-and-instruments)
 - [Test Cases ](#tests)
-- [Running Tests from Jenkins](#how-to-run)
+- [Running Tests](#how-to-run)
 - [Allure Report](#allure-report)
 - [Report Artefacts](#test-artefacts)
 - [Integration with Allure TestOps](#allure-test-ops)
@@ -67,23 +67,24 @@ Create new object tests
 
 ----
 
-Launch parameters are stored in .properties files. To run tests, you can use the commands:
+### <a name="how-to-run"></a>Running Tests
 
-For running locally (regress or smoke tests):
+Launch parameters are stored in .properties files.  
+To run tests, you can use the standard Gradle task for running tests or one of the custom tasks - 'regress' or 'smoke' to run the group.
+
+For running locally:
 
 ```commandline
  gradle clean regress -Denv=local
 ```
 
-For remote browser execution
+For remote browser execution in Selenoid:
 
 ```commandline
  gradle clean smoke -Denv=local
 ```
 
-----
-
-### <a name="how-to-run"></a>Running Tests from Jenkins
+From Jenkins:
 
 A task has been configured to run autotests with parameters in [Jenkins](https://jenkins.autotests.cloud/job/021-azovceva-bas-demo-project/).
 <p>
