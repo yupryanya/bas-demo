@@ -70,7 +70,7 @@ Create new object tests
 ### <a name="how-to-run"></a>Running Tests
 
 Launch parameters are stored in .properties files.  
-To run tests, you can use the standard Gradle task for running tests or one of the custom tasks - 'regress' or 'smoke' to run the group.
+To execute tests, you can use the standard Gradle task for running tests or one of the custom tasks - 'regress' or 'smoke' to run specific test groups.
 
 For running locally:
 
