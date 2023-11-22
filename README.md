@@ -66,7 +66,7 @@ Create new object tests
 
 [↑ to contents](#contents)
 
----
+----
 
 ### <a name="how-to-run"></a>Running Tests from Jenkins
 
@@ -82,7 +82,7 @@ Once the job is complete, you can get a summary of the test run and access the A
 
 [↑ to contents](#contents)
 
----
+----
 
 ### <a name="allure-report"></a>Allure Report
 
@@ -94,7 +94,7 @@ After the tests have passed, a graphical representation of the results is genera
 
 [↑ to contents](#contents)
 
----
+----
 
 ### <a name="test-artefacts"></a>Report Artefacts
 Detailed information, including snapshots, screenshots, and screen recordings for analyzing failed tests, is saved in the Allure Report.
@@ -103,11 +103,15 @@ Detailed information, including snapshots, screenshots, and screen recordings fo
 <img width="88%" title="Allure report artefacts" src="media/screens/allure_report_with_screenshots.png">
 </p>
 
-//TO DO: video
+Recording a video of test execution can help to identify any issues or errors that occur during the test run.
+
+<p>
+<img width="88%" title="Test execution video" src="media/screens/test_video.gif">
+</p>
 
 [↑ to contents](#contents)
 
----
+----
 
 ### <a name="allure-test-ops"></a>Integration with Allure TestOps
 The integration between Jenkins and Allure works in both directions. Test results are collected in real-time from the build server during the execution of the build job. Additionally, tests can be initiated directly from the Allure interface. Manual and automated checks are combined into one test suite.
@@ -118,7 +122,7 @@ The integration between Jenkins and Allure works in both directions. Test result
 
 [↑ to contents](#contents)
 
----
+----
 
 ### <a name="jira"></a>Integration with Jira
 The Jira ticket is linked with tests from Allure TestOps.
@@ -129,7 +133,7 @@ The Jira ticket is linked with tests from Allure TestOps.
 
 [↑ to contents](#contents)
 
----
+----
 
 ### <a name="telegram-notification"></a>Allure Notifications 
 Using the Allure notifications library, automatic notifications about the test results are sent to Telegram (also works with Slack, Skype, Email, Mattermost, Discord, Loop).
@@ -140,4 +144,4 @@ Using the Allure notifications library, automatic notifications about the test r
 
 [↑ to contents](#contents)
 
----
+----
