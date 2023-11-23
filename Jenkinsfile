@@ -19,10 +19,10 @@ pipeline {
                         choices: ['1920x1080', '1280x720'],
                         description: 'Select the screen resolution')
         choice(name: 'API_URL',
-                        choices: ['https://demoqa.com'],
+                        choices: ['https://bas.comfortsoft.ru/bas'],
                         description: 'Enter the API URL')
         choice(name: 'WEB_URL',
-                        choices: ['https://demoqa.com'],
+                        choices: ['https://bas.comfortsoft.ru/frontbas'],
                         description: 'Enter the web URL')
         string(name: 'COMMENT',
                         defaultValue: '',
