@@ -7,7 +7,7 @@ pipeline {
 
     parameters {
         choice(name: 'TASK',
-                        choices: ['test', 'regression', 'smoke'],
+                        choices: ['test', 'regress', 'smoke'],
                         description: 'Select the task to run')
         choice(name: 'BROWSER',
                         choices: ['chrome', 'firefox'],
