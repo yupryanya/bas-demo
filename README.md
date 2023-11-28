@@ -17,18 +17,20 @@ Welcome to my demo Java test automation project designed for a web-based client-
 ### <a name="tech-and-instruments"></a>Technologies and Tools
 
 <p>
-<img width="6%" title="Java" src="media/svg/java.svg">
-<img width="6%" title="IntelliJ IDEA" src="media/svg/idea.svg">
-<img width="7%" title="Gradle" src="media/svg/gradle.svg">
-<img width="6%" title="JUnit5" src="media/svg/junit5.svg">
-<img width="6%" title="Selenide" src="media/svg/selenide.svg">
-<img width="5.5%" title="Selenide" src="media/svg/restassured.png">
-<img width="6%" title="GitHub" src="media/svg/github.svg">
-<img width="5.5%" title="Jenkins" src="media/svg/jenkins.svg">
-<img width="6%" title="Selenoid" src="media/svg/selenoid.svg">
-<img width="6%" title="AllureReport" src="media/svg/allure.svg">
-<img width="5%" title="Allure TestOps" src="media/svg/alluretestops.svg">
-<img width="6%" title="Jira" src="media/svg/jira.svg">
+
+[<img width="6%" title="Java" src="media/svg/java.svg">](https://www.java.com/)
+[<img width="6%" title="IntelliJ IDEA" src="media/svg/idea.svg">](https://www.jetbrains.com/idea/)
+[<img width="7%" title="Gradle" src="media/svg/gradle.svg">](https://gradle.org/)
+[<img width="6%" title="JUnit5" src="media/svg/junit5.svg">](https://junit.org/junit5/)
+[<img width="6%" title="Selenide" src="media/svg/selenide.svg">](https://ru.selenide.org/)
+[<img width="5.5%" title="Selenide" src="media/svg/restassured.png">](https://rest-assured.io/)
+[<img width="6%" title="GitHub" src="media/svg/github.svg">](https://github.com/)
+[<img width="5.5%" title="Jenkins" src="media/svg/jenkins.svg">](https://www.jenkins.io/)
+[<img width="6%" title="Selenoid" src="media/svg/selenoid.svg">](https://aerokube.com/selenoid/)
+[<img width="6%" title="AllureReport" src="media/svg/allure.svg">](https://allurereport.org/)
+[<img width="5%" title="Allure TestOps" src="media/svg/alluretestops.svg">](https://qameta.io/)
+[<img width="6%" title="Jira" src="media/svg/jira.svg">](https://www.atlassian.com/software/jira/)
+
 </p>
 
 `IntelliJ IDEA` for code writing and as a `Git` tool\
