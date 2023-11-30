@@ -1,8 +1,8 @@
 ### <a name="about-system"></a>About
 
-> :warning: This testing project is for demonstration purposes only and covers only a limited part of the overall functionality. 
-> 
-> The primary goal is to showcase some aspects of my expertise in Java testing and related technologies.
+> :warning:   This testing project is for demonstration purposes only and covers only a limited part of the overall functionality. 
+
+The primary goal is to showcase some aspects of my expertise in Java testing and related technologies.
 
 It designed for a web-based client-server analytics system. This system handles data related to buildings and other objects of the urban environment.
 
