@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.tests.objects;
+package ru.comfortsoft.bas.tests.ui.objects;
 
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;

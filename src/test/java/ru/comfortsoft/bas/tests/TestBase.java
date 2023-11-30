@@ -47,7 +47,7 @@ public class TestBase {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        if (App.appConfig.isRemote()) {
+        if (App.webConfig.isRemote()) {
             Attach.addVideo();
         }
         closeWebDriver();

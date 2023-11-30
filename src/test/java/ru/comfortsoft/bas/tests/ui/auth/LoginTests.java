@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.tests.auth;
+package ru.comfortsoft.bas.tests.ui.auth;
 
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
@@ -21,7 +21,7 @@ public class LoginTests extends TestBase {
     @Owner("Yulia Azovtseva")
     void successfulLoginTest() {
         loginPage.openPage();
-        loginPage.signIn(App.authConfig.username(), App.authConfig.password());
+        loginPage.signIn(App.appConfig.username(), App.appConfig.password());
         header.userIsAuthorizedAs(UserApi.getAuthorizedUserInfo().getName());
     }
 
@@ -45,7 +45,7 @@ public class LoginTests extends TestBase {
     @Owner("Yulia Azovtseva")
     void unsuccessfulLoginWithInvalidPasswordTest() {
         loginPage.openPage();
-        loginPage.signIn(App.authConfig.username(), "invalid_password");
+        loginPage.signIn(App.appConfig.username(), "invalid_password");
         loginPage.guestPageIsDisplayed();
     }
 }
