@@ -1,24 +1,22 @@
-### <a name="about-system"></a>About
-
-> :warning:   This testing project is for demonstration purposes only and covers only a limited part of the overall functionality. 
-
-The primary goal is to showcase some aspects of my expertise in Java testing and related technologies.
-
-It designed for a web-based client-server analytics system. This system handles data related to buildings and other objects of the urban environment.
-
 ### Contents
 
-- [Technologies and Tools](#tech-and-instruments)
-- [Test Cases ](#tests)
-- [Running Tests](#how-to-run)
-- [Allure Report](#allure-report)
-- [Report Artefacts](#test-artefacts)
-- [Integration with Allure TestOps](#allure-test-ops)
-- [Integration with Jira](#jira)
-- [Allure Notifications](#telegram-notification)
+[Tools and Libraries](#tech-and-instruments)\
+[API Testing](#api-tests)\
+[UI Test Cases ](#tests)\
+[Running Tests](#how-to-run)\
+[Allure Report](#allure-report)\
+[Report Artefacts](#test-artefacts)\
+[Integration with Allure TestOps](#allure-test-ops)\
+[Integration with Jira](#jira)\
+[Allure Notifications](#telegram-notification)
 
+> :information_source:   This testing project is for demonstration purposes only and covers only a limited part of the overall functionality.
 
-### <a name="tech-and-instruments"></a>Technologies and Tools
+The primary goal is to highlight some aspects of my skills in Java testing and related technologies.
+
+It designed for a web "Basic Analytical System". This system deals with data related to buildings and other objects of the urban environment.
+
+### <a name="tech-and-instruments"></a>Tools and Libraries
 
 <p>
 
@@ -37,20 +35,42 @@ It designed for a web-based client-server analytics system. This system handles 
 
 </p>
 
-`IntelliJ IDEA` for code writing and as a `Git` tool\
-`Gradle` for build automation\
-`JUnit5` for test execution\
-`Selenide` for accelerated development based on `Selenium WebDriver`\
-`REST Assured` for API testing\
-`GitHub` for code storage\
-`Jenkins` for remote test execution\
-`Selenoid` for running browsers in `Docker` containers\
-`Allure Report` for visualizing test results\
-`Allure TestOps` for test management\
-`Jira` for task management\
-`Telegram` for test result notifications
+* [Gradle](https://gradle.org/) for build automation
+* [JUnit 5](https://junit.org/junit5/) to support the test creation
+* [Selenide](https://ru.selenide.org/) for accelerated development based on Selenium WebDriver
+* [RestAssured](http://rest-assured.io/) library to test REST APIs
+* [Owner](https://matteobaccan.github.io/owner/) to manage the property files
+* [Java-faker](https://github.com/DiUS/java-faker) to generate fake data
+* [AssertJ](https://assertj.github.io/doc/) to assertions
+* [Allure Report](https://docs.qameta.io/allure/) as the testing report strategy
+* [Selenoid](https://aerokube.com/selenoid/) for running browsers in Docker containers
+* [Jira](https://www.atlassian.com/software/jira/) for task management
+* [Jenkins](https://www.jenkins.io/) for remote test execution
+* [Allure TestOps](https://qameta.io/) for test management
 
-### <a name="tests"></a>Test Cases
+----
+
+### <a name="api-tests"></a>API Testing
+
+In this part of the project, there are several tests of API endpoint:
+
+| Request                  | What it does         |
+|--------------------------|----------------------|
+| `POST /v1/dict-data/obj` | Creates a new object |
+
+Tests:
+1. Create a new object with auto-generated code
+2. Create a new object with user-defined code
+3. Attempt to create an object with missing 'name' parameter
+4. Attempt to create an object with missing 'parentCode' parameter
+
+[↑ to contents](#contents)
+
+----
+
+### <a name="tests"></a>UI Test Cases
+
+Some of the tests use API calls to assist the UI steps.
 
 Login tests
 1. Authenticate successfully with valid credentials
@@ -76,18 +96,18 @@ Create new object tests
 ### <a name="how-to-run"></a>Running Tests
 
 Launch parameters are stored in .properties files.  
-To execute tests, you can use the standard Gradle task for running tests or one of the custom tasks - 'regress' or 'smoke' to run specific test groups.
+To execute tests, you can use the standard Gradle `test` task for running tests or one of the custom tasks `regress` or `smoke` to run specific test groups.
 
 For running locally:
 
 ```commandline
- gradle clean regress -Denv=local
+ gradle clean test -Denv=local
 ```
 
 For remote browser execution in Selenoid:
 
 ```commandline
- gradle clean smoke -Denv=remote
+ gradle clean test -Denv=remote
 ```
 
 From Jenkins:

@@ -17,14 +17,8 @@ public class BaseSpec {
             .log().method()
             .log().body()
             .contentType(JSON);
-    public static ResponseSpecification responseWithStatusCode200Spec = new ResponseSpecBuilder()
+    public static ResponseSpecification defaultResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
-            .expectStatusCode(200)
-            .build();
-    public static ResponseSpecification responseWithStatusCode204Spec = new ResponseSpecBuilder()
-            .log(STATUS)
-            .log(BODY)
-            .expectStatusCode(204)
             .build();
 }

@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.tests;
+package ru.comfortsoft.bas.tests.ui;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 
@@ -21,7 +21,7 @@ import ru.comfortsoft.bas.pages.objects.ObjectsListPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class TestBase {
+public class BaseWeb {
     protected final LoginPage loginPage = new LoginPage();
     protected final Header header = new Header();
     protected final MainPage mainPage = new MainPage();

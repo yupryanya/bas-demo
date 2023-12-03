@@ -10,13 +10,14 @@ import ru.comfortsoft.bas.data.MenuItems;
 import ru.comfortsoft.bas.data.ObjectLevels;
 import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
-import ru.comfortsoft.bas.tests.TestBase;
+import ru.comfortsoft.bas.models.objects.CreateObjectResponseModel;
+import ru.comfortsoft.bas.tests.ui.BaseWeb;
 import ru.comfortsoft.bas.utilities.RandomData;
 
 @DisplayName("Objects list tests")
-public class ObjectsListTests extends TestBase {
-    private RandomData randomValues = new RandomData();
-    private final CreateObjectRequestModel object = CreateObjectRequestModel.builder()
+public class ObjectsListTests extends BaseWeb {
+    private final RandomData randomValues = new RandomData();
+    private final CreateObjectRequestModel randomDataObject = CreateObjectRequestModel.builder()
             .objType(randomValues.getRandomObjectType().getObjectTypeCode())
             .address(randomValues.generateRandomAddress())
             .name("Наименование объекта")
@@ -56,15 +57,15 @@ public class ObjectsListTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
     void successfulSearchByAddressUsingSidebarFilterTest() {
-        String objectCode = objectsApi.createObject(object).getCode();
+        String objectCode = objectsApi.createObject(randomDataObject).as(CreateObjectResponseModel.class).getCode();
 
         objectsListPage.openPage();
         objectsListPage.expandSidebarFilter();
-        sidebarFilter.setAddress(object.getAddress());
+        sidebarFilter.setAddress(randomDataObject.getAddress());
         sidebarFilter.clickSubmitButton();
-        objectsListPage.valueIsDisplayedInObjectsList(object.getAddress());
+        objectsListPage.valueIsDisplayedInObjectsList(randomDataObject.getAddress());
 
-        objectsApi.deleteObjectByCode(objectCode);
+        objectsApi.deleteObject(objectCode);
     }
 
     @Test
@@ -74,13 +75,14 @@ public class ObjectsListTests extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
     void successfulSearchByAddressUsingTheMainSearchInputTest() {
-        String objectCode = objectsApi.createObject(object).getCode();
+        String objectCode = objectsApi.createObject(randomDataObject).as(CreateObjectResponseModel.class).getCode();
+        String address = randomDataObject.getAddress();
 
         objectsListPage.openPage();
-        objectsListPage.fillTheMainSearchField(object.getAddress());
-        objectsListPage.valueIsDisplayedInObjectsList(object.getAddress());
+        objectsListPage.fillTheMainSearchField(address);
+        objectsListPage.valueIsDisplayedInObjectsList(address);
 
-        objectsApi.deleteObjectByCode(objectCode);
+        objectsApi.deleteObject(objectCode);
     }
 
     @Test

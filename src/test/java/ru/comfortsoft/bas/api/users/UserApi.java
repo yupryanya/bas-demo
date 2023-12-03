@@ -6,17 +6,17 @@ import ru.comfortsoft.bas.models.users.UserResponseModel;
 
 import static io.restassured.RestAssured.given;
 import static ru.comfortsoft.bas.specs.BaseSpec.defaultRequestSpec;
-import static ru.comfortsoft.bas.specs.BaseSpec.responseWithStatusCode200Spec;
+import static ru.comfortsoft.bas.specs.BaseSpec.defaultResponseSpec;
 
 public class UserApi {
     public static UserResponseModel getAuthorizedUserInfo() {
         return
                 given(defaultRequestSpec)
-                    .cookie("JSESSIONID", LoginApi.getSessionIdCookie())
-               .when()
-                    .get(UsersEndpoint.GET_LOGGED)
-               .then()
-                    .spec(responseWithStatusCode200Spec)
-                    .extract().as(UserResponseModel.class);
+                        .cookie("JSESSIONID", LoginApi.startSession())
+                        .when()
+                        .get(UsersEndpoint.GET_LOGGED)
+                        .then()
+                        .spec(defaultResponseSpec)
+                        .extract().as(UserResponseModel.class);
     }
 }

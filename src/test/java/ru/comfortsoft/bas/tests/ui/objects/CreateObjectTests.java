@@ -7,12 +7,12 @@ import org.junit.jupiter.api.*;
 import ru.comfortsoft.bas.data.Districts;
 import ru.comfortsoft.bas.data.ObjectTypes;
 import ru.comfortsoft.bas.helpers.WithLogin;
-import ru.comfortsoft.bas.tests.TestBase;
+import ru.comfortsoft.bas.tests.ui.BaseWeb;
 import ru.comfortsoft.bas.utilities.RandomData;
 
 @DisplayName("Create object tests")
-public class CreateObjectTests extends TestBase {
-    private RandomData randomValues = new RandomData();
+public class CreateObjectTests extends BaseWeb {
+    private final RandomData randomValues = new RandomData();
 
     @Test
     @WithLogin
@@ -36,7 +36,7 @@ public class CreateObjectTests extends TestBase {
         Districts district = randomValues.getRandomDistrict();
         ObjectTypes objectType = randomValues.getRandomObjectType();
         String objectAddress = randomValues.generateRandomAddress();
-        String objectName = "Наименование";
+        String objectName = "Наименование объекта";
 
         createObjectPage.openPage();
         createObjectPage.setObjectName(objectName);
@@ -47,7 +47,7 @@ public class CreateObjectTests extends TestBase {
         createObjectPage.clickSubmitButton();
         objectViewPage.objectWithRequiredFieldsisDisplayed(objectCode, district.getDistrictName(), objectType.getObjectTypeName(), objectAddress);
 
-        objectsApi.deleteObjectByCode(objectCode);
+        objectsApi.deleteObject(objectCode);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class CreateObjectTests extends TestBase {
     @Owner("Yulia Azovtseva")
     void newObjectCreationWithIncompleteRequiredFieldsTest() {
         String objectAddress = randomValues.generateRandomAddress();
-        String objectName = "Наименование";
+        String objectName = "Наименование объекта";
 
         createObjectPage.openPage();
         createObjectPage.setObjectName(objectName);

@@ -8,8 +8,7 @@ import java.util.Locale;
 import java.util.Random;
 
 public class RandomData {
-    private final Locale locale = new Locale("ru-RU");
-    private final Faker faker = new Faker(locale);
+    private final Faker faker = new Faker(new Locale("ru-RU"));
     private final Random random = new Random();
 
     public String generateRandomAddress() {
@@ -24,5 +23,10 @@ public class RandomData {
     public ObjectTypes getRandomObjectType() {
         ObjectTypes[] objectTypes = ObjectTypes.values();
         return objectTypes[random.nextInt(objectTypes.length)];
+    }
+
+    public String generateRandomObjectCode() {
+        int randomCode = new Random().nextInt(900000) + 100000;
+        return "OBT" + String.format("%06d", randomCode);
     }
 }

@@ -35,6 +35,5 @@ public class CreateObjectResponseModel {
     private List<String> prefect,
             district;
 
-    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSXXX")
     private String updateTime, createTime, startDate;
 }

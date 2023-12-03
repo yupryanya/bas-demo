@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 import ru.comfortsoft.bas.api.users.UserApi;
 import ru.comfortsoft.bas.config.App;
 import ru.comfortsoft.bas.helpers.WithLogin;
-import ru.comfortsoft.bas.tests.TestBase;
+import ru.comfortsoft.bas.tests.ui.BaseWeb;
 
 @DisplayName("Login tests")
-public class LoginTests extends TestBase {
+public class LoginTests extends BaseWeb {
     @Test
     @DisplayName("Authenticate successfully with valid credentials")
     @Tags({@Tag("smoke"), @Tag("regress")})

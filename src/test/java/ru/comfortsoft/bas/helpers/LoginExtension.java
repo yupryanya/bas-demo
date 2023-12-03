@@ -12,6 +12,6 @@ public class LoginExtension implements BeforeEachCallback {
     @Override
     public void beforeEach(ExtensionContext context) {
         open("/favicon.ico");
-        getWebDriver().manage().addCookie(new Cookie("JSESSIONID", LoginApi.getSessionIdCookie()));
+        getWebDriver().manage().addCookie(new Cookie("JSESSIONID", LoginApi.startSession()));
     }
 }

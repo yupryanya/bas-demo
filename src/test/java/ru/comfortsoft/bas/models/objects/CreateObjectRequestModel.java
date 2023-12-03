@@ -6,8 +6,10 @@ import lombok.Data;
 @Data
 @Builder
 public class CreateObjectRequestModel {
-    private String address,
+    private String code,
+            address,
             name,
             objType,
+            comment,
             parentCode;
 }
