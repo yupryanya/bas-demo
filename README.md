@@ -93,7 +93,7 @@ Objects list tests
 Create new object tests
 1. Open 'New object' form from Objects page
 2. Create a new object with all required fields properly filled
-3. Create a new object with incomplete required fields
+3. Attempt to create a new object with incomplete required fields
 
 [↑ to contents](#contents)
 
