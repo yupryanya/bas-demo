@@ -135,7 +135,7 @@ Once the job is complete, you can get a summary of the test run and access the A
 
 ### <a name="allure-report"></a>Allure Report
 
-After the tests have passed, [Allure Report](https://jenkins.autotests.cloud/job/021-azovceva-bas-demo-project/allure/) is generated.
+After the tests have passed, [Allure Report](https://jenkins.autotests.cloud/job/021-azovceva-demo-project/allure/) is generated.
 Each test is presented in the report as a series of steps with readable names.
 
 <p>
