@@ -61,11 +61,12 @@ In this part of the project, there are several tests of API endpoint:
 |--------------------------|----------------------|
 | `POST /v1/dict-data/obj` | Creates a new object |
 
-Tests:
+Tests include both basic positive (happy paths) and negative scenarios:
+
 1. Create a new object with auto-generated code
 2. Create a new object with user-defined code
+3. Attempt to create an object with existing code
 3. Attempt to create an object with missing 'name' parameter
-4. Attempt to create an object with missing 'parentCode' parameter
 5. Attempt to create an object with invalid 'parentCode' parameter
 
 [↑ to contents](#contents)
@@ -74,7 +75,8 @@ Tests:
 
 ### <a name="tests"></a>UI Test Cases
 
-Some of the tests use API calls to assist the UI steps.
+In this part of the project, there are three test suites of UI tests.
+Some of the tests use API calls to assist the UI steps for setting preconditions.
 
 Login tests
 1. Authenticate successfully with valid credentials

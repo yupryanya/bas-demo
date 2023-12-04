@@ -41,10 +41,10 @@ public class RandomData {
                         .build();
     }
 
-    public CreateObjectRequestModel allRequiredParamsWithCode() {
+    public CreateObjectRequestModel allRequiredParamsWithCode(String code) {
         return
                 CreateObjectRequestModel.builder()
-                        .code(generateRandomObjectCode())
+                        .code(code)
                         .objType(getRandomObjectType().getObjectTypeCode())
                         .address(generateRandomAddress())
                         .name("Object Name")

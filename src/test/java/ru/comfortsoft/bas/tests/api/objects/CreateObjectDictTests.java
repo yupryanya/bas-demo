@@ -8,10 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
-import ru.comfortsoft.bas.models.objects.CreateObject400ResponseModel;
-import ru.comfortsoft.bas.models.objects.CreateObject404ResponseModel;
-import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
-import ru.comfortsoft.bas.models.objects.CreateObjectResponseModel;
+import ru.comfortsoft.bas.models.dictData.DictData400ResponseModel;
+import ru.comfortsoft.bas.models.dictData.DictData404ResponseModel;
+import ru.comfortsoft.bas.models.dictData.DictData409ResponseModel;
+import ru.comfortsoft.bas.models.objects.*;
 import ru.comfortsoft.bas.tests.api.BaseApi;
 import ru.comfortsoft.bas.data.randomData.RandomData;
 
@@ -47,7 +47,7 @@ public class CreateObjectDictTests extends BaseApi {
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
     void createObjectWithUserDefinedCodeTest() {
-        CreateObjectRequestModel randomDataObject = randomValues.allRequiredParamsWithCode();
+        CreateObjectRequestModel randomDataObject = randomValues.allRequiredParamsWithCode(randomValues.generateRandomObjectCode());
         Response response = objectsApi.createObject(randomDataObject);
         CreateObjectResponseModel responseObject = response.as(CreateObjectResponseModel.class);
 
@@ -61,44 +61,46 @@ public class CreateObjectDictTests extends BaseApi {
     }
 
     @Test
+    @DisplayName("Attempt to create an object with existing code")
+    @Tag("regress")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Yulia Azovtseva")
+    void createObjectWithExistingCodeTest() {
+        String code = randomValues.generateRandomObjectCode();
+
+        CreateObjectRequestModel randomDataObject = randomValues.allRequiredParamsWithCode(code);
+        objectsApi.createObject(randomDataObject);
+
+        CreateObjectRequestModel randomDataObjectNew = randomValues.allRequiredParamsWithCode(code);
+        Response response = objectsApi.createObject(randomDataObjectNew);
+        DictData409ResponseModel responseObject = response.as(DictData409ResponseModel.class);
+
+        assertAll(
+                () -> assertThat(response.getStatusCode()).isEqualTo(409),
+                () -> assertThat(responseObject.getErrorCode()).isEqualTo("DuplicateObjectError"),
+                () -> assertThat(responseObject.getErrorData().getObjectType()).isEqualTo("obj")
+        );
+        objectsApi.deleteObject(code);
+    }
+
+    @Test
     @DisplayName("Attempt to create an object with missing 'name' parameter")
     @Tag("regress")
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
-    void createObjectWithMissedNameParamTest() {
+    void createObjectWithMissingNameParamTest() {
         CreateObjectRequestModel randomDataObject = CreateObjectRequestModel.builder()
                 .objType(randomValues.getRandomObjectType().getObjectTypeCode())
                 .address(randomValues.generateRandomAddress())
                 .parentCode(randomValues.getRandomDistrict().getCode())
                 .build();
         Response response = objectsApi.createObject(randomDataObject);
-        CreateObject400ResponseModel responseObject = response.as(CreateObject400ResponseModel.class);
+        DictData400ResponseModel responseObject = response.as(DictData400ResponseModel.class);
 
         assertAll(
                 () -> assertThat(response.getStatusCode()).isEqualTo(400),
                 () -> assertThat(responseObject.getErrorCode()).isEqualTo("IllegalParameterError"),
                 () -> assertThat(responseObject.getErrorData().getParam()).isEqualTo("name")
-        );
-    }
-
-    @Test
-    @DisplayName("Attempt to create an object with missing 'parentCode' parameter")
-    @Tag("regress")
-    @Severity(SeverityLevel.NORMAL)
-    @Owner("Yulia Azovtseva")
-    void createObjectWithMissingParentParamTest() {
-        CreateObjectRequestModel randomDataObject = CreateObjectRequestModel.builder()
-                .objType(randomValues.getRandomObjectType().getObjectTypeCode())
-                .address(randomValues.generateRandomAddress())
-                .name("Object Name")
-                .build();
-        Response response = objectsApi.createObject(randomDataObject);
-        CreateObject400ResponseModel responseObject = response.as(CreateObject400ResponseModel.class);
-
-        assertAll(
-                () -> assertThat(response.getStatusCode()).isEqualTo(400),
-                () -> assertThat(responseObject.getErrorCode()).isEqualTo("IllegalParameterError"),
-                () -> assertThat(responseObject.getErrorData().getParam()).isEqualTo("parentCode")
         );
     }
 
@@ -116,7 +118,7 @@ public class CreateObjectDictTests extends BaseApi {
                 .name("Object Name")
                 .build();
         Response response = objectsApi.createObject(randomDataObject);
-        CreateObject404ResponseModel responseObject = response.as(CreateObject404ResponseModel.class);
+        DictData404ResponseModel responseObject = response.as(DictData404ResponseModel.class);
 
         assertAll(
                 () -> assertThat(response.getStatusCode()).isEqualTo(404),
