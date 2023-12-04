@@ -8,7 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
-import ru.comfortsoft.bas.models.objects.CreateObjectErrorResponseModel;
+import ru.comfortsoft.bas.models.objects.CreateObject400ResponseModel;
+import ru.comfortsoft.bas.models.objects.CreateObject404ResponseModel;
 import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
 import ru.comfortsoft.bas.models.objects.CreateObjectResponseModel;
 import ru.comfortsoft.bas.tests.api.BaseApi;
@@ -33,6 +34,7 @@ public class CreateObjectDictTests extends BaseApi {
 
         assertAll(
                 () -> assertThat(response.getStatusCode()).isEqualTo(200),
+                () -> assertThat(responseObject.getCode()).isNotNull(),
                 () -> assertThat(responseObject.getAddress()).isEqualTo(randomDataObject.getAddress()),
                 () -> assertThat(responseObject.getParentCode()).isEqualTo(randomDataObject.getParentCode())
         );
@@ -70,7 +72,7 @@ public class CreateObjectDictTests extends BaseApi {
                 .parentCode(randomValues.getRandomDistrict().getCode())
                 .build();
         Response response = objectsApi.createObject(randomDataObject);
-        CreateObjectErrorResponseModel responseObject = response.as(CreateObjectErrorResponseModel.class);
+        CreateObject400ResponseModel responseObject = response.as(CreateObject400ResponseModel.class);
 
         assertAll(
                 () -> assertThat(response.getStatusCode()).isEqualTo(400),
@@ -91,12 +93,35 @@ public class CreateObjectDictTests extends BaseApi {
                 .name("Object Name")
                 .build();
         Response response = objectsApi.createObject(randomDataObject);
-        CreateObjectErrorResponseModel responseObject = response.as(CreateObjectErrorResponseModel.class);
+        CreateObject400ResponseModel responseObject = response.as(CreateObject400ResponseModel.class);
 
         assertAll(
                 () -> assertThat(response.getStatusCode()).isEqualTo(400),
                 () -> assertThat(responseObject.getErrorCode()).isEqualTo("IllegalParameterError"),
                 () -> assertThat(responseObject.getErrorData().getParam()).isEqualTo("parentCode")
+        );
+    }
+
+    @Test
+    @DisplayName("Attempt to create an object with invalid 'parentCode' parameter")
+    @Tag("regress")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Yulia Azovtseva")
+    void createObjectWithInvalidParentParamTest() {
+        String invalidParentCode = "9999";
+        CreateObjectRequestModel randomDataObject = CreateObjectRequestModel.builder()
+                .objType(randomValues.getRandomObjectType().getObjectTypeCode())
+                .address(randomValues.generateRandomAddress())
+                .parentCode(invalidParentCode)
+                .name("Object Name")
+                .build();
+        Response response = objectsApi.createObject(randomDataObject);
+        CreateObject404ResponseModel responseObject = response.as(CreateObject404ResponseModel.class);
+
+        assertAll(
+                () -> assertThat(response.getStatusCode()).isEqualTo(404),
+                () -> assertThat(responseObject.getErrorCode()).isEqualTo("NotFoundError"),
+                () -> assertThat(responseObject.getErrorData().getId()).isEqualTo(invalidParentCode)
         );
     }
 }

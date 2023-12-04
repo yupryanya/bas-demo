@@ -16,6 +16,8 @@ The primary goal is to highlight some aspects of my skills in Java testing and r
 
 It designed for a web "Basic Analytical System". This system deals with data related to buildings and other objects of the urban environment.
 
+----
+
 ### <a name="tech-and-instruments"></a>Tools and Libraries
 
 <p>
@@ -40,6 +42,7 @@ It designed for a web "Basic Analytical System". This system deals with data rel
 * [Selenide](https://ru.selenide.org/) for accelerated development based on Selenium WebDriver
 * [RestAssured](http://rest-assured.io/) library to test REST APIs
 * [Owner](https://matteobaccan.github.io/owner/) to manage the property files
+* [Lombok](https://projectlombok.org/features/) to simplify java code
 * [Java-faker](https://github.com/DiUS/java-faker) to generate fake data
 * [AssertJ](https://assertj.github.io/doc/) to assertions
 * [Allure Report](https://docs.qameta.io/allure/) as the testing report strategy
@@ -63,6 +66,7 @@ Tests:
 2. Create a new object with user-defined code
 3. Attempt to create an object with missing 'name' parameter
 4. Attempt to create an object with missing 'parentCode' parameter
+5. Attempt to create an object with invalid 'parentCode' parameter
 
 [↑ to contents](#contents)
 
@@ -95,24 +99,27 @@ Create new object tests
 
 ### <a name="how-to-run"></a>Running Tests
 
-Launch parameters are stored in .properties files.  
 To execute tests, you can use the standard Gradle `test` task for running tests or one of the custom tasks `regress` or `smoke` to run specific test groups.
 
-For running locally:
+Launch parameters for tests execution are stored in .properties files: 
+- Use `-Denv` to define the test environment  
+- Use `-Dweb` to configure the web browser 
+
+For example to run tests locally:
 
 ```commandline
- gradle clean test -Denv=local
+ gradle clean test -Denv=bas -Dweb=locale
 ```
 
 For remote browser execution in Selenoid:
 
 ```commandline
- gradle clean test -Denv=remote
+ gradle clean test -Denv=bas -Dweb=remote
 ```
 
 From Jenkins:
 
-A task has been configured to run autotests with parameters in [Jenkins](https://jenkins.autotests.cloud/job/021-azovceva-bas-demo-project/).
+This project uses pipeline to run autotests with parameters in [Jenkins](https://jenkins.autotests.cloud/job/021-azovceva-demo-project/).
 <p>
 <img width="88%" title="Launch with Jenkins" src="media/screens/parametrized_jenkins_job.png">
 </p>
