@@ -2,7 +2,7 @@ package ru.comfortsoft.bas.pages.components;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import ru.comfortsoft.bas.data.MenuItems;
+import ru.comfortsoft.bas.data.app.MenuItems;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;

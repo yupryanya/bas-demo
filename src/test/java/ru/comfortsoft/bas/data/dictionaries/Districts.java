@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.data;
+package ru.comfortsoft.bas.data.dictionaries;
 
 public enum Districts {
     ARBAT("0101", "Арбат"),

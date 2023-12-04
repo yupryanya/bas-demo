@@ -3,7 +3,7 @@ package ru.comfortsoft.bas.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:config/${stage}.properties"
+        "classpath:config/env/${env}.properties"
 })
 
 public interface AppConfig extends Config {

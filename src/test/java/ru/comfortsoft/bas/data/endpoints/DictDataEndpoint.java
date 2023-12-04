@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.api.endpoints;
+package ru.comfortsoft.bas.data.endpoints;
 
 public class DictDataEndpoint {
     public static final String CREATE = "/v1/dict-data/{dict-code}";

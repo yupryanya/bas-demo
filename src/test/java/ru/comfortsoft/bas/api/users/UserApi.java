@@ -1,7 +1,7 @@
 package ru.comfortsoft.bas.api.users;
 
 import ru.comfortsoft.bas.api.auth.LoginApi;
-import ru.comfortsoft.bas.api.endpoints.UsersEndpoint;
+import ru.comfortsoft.bas.data.endpoints.UsersEndpoint;
 import ru.comfortsoft.bas.models.users.UserResponseModel;
 
 import static io.restassured.RestAssured.given;

@@ -3,7 +3,7 @@ package ru.comfortsoft.bas.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:config/${env}.properties"
+        "classpath:config/web/${web}.properties"
 })
 
 public interface WebConfig extends Config {

@@ -13,7 +13,7 @@ public class WebDriverProvider {
             browser = webConfig.browser();
             browserVersion = webConfig.browserVersion();
             browserSize = webConfig.browserSize();
-            timeout = 10000;
+            timeout = 15000;
             baseUrl = appConfig.webUrl();
 
             if (webConfig.isRemote()) {

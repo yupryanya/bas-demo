@@ -4,15 +4,15 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
-import ru.comfortsoft.bas.data.Districts;
-import ru.comfortsoft.bas.data.ObjectTypes;
+import ru.comfortsoft.bas.data.dictionaries.Districts;
+import ru.comfortsoft.bas.data.dictionaries.ObjectTypes;
 import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.tests.ui.BaseWeb;
-import ru.comfortsoft.bas.utilities.RandomData;
+import ru.comfortsoft.bas.data.randomData.RandomData;
 
 @DisplayName("Create object tests")
 public class CreateObjectTests extends BaseWeb {
-    private final RandomData randomValues = new RandomData();
+    private RandomData randomValues = new RandomData();
 
     @Test
     @WithLogin
@@ -36,7 +36,7 @@ public class CreateObjectTests extends BaseWeb {
         Districts district = randomValues.getRandomDistrict();
         ObjectTypes objectType = randomValues.getRandomObjectType();
         String objectAddress = randomValues.generateRandomAddress();
-        String objectName = "Наименование объекта";
+        String objectName = "Object Name";
 
         createObjectPage.openPage();
         createObjectPage.setObjectName(objectName);
@@ -58,7 +58,7 @@ public class CreateObjectTests extends BaseWeb {
     @Owner("Yulia Azovtseva")
     void newObjectCreationWithIncompleteRequiredFieldsTest() {
         String objectAddress = randomValues.generateRandomAddress();
-        String objectName = "Наименование объекта";
+        String objectName = "Object Name";
 
         createObjectPage.openPage();
         createObjectPage.setObjectName(objectName);

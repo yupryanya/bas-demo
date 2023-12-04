@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.data;
+package ru.comfortsoft.bas.data.app;
 
 public enum MenuItems {
     MAIN("Главная"),

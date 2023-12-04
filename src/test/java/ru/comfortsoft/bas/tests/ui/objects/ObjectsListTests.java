@@ -6,23 +6,18 @@ import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import ru.comfortsoft.bas.data.MenuItems;
-import ru.comfortsoft.bas.data.ObjectLevels;
+import ru.comfortsoft.bas.data.app.MenuItems;
+import ru.comfortsoft.bas.data.dictionaries.ObjectLevels;
 import ru.comfortsoft.bas.helpers.WithLogin;
 import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
 import ru.comfortsoft.bas.models.objects.CreateObjectResponseModel;
 import ru.comfortsoft.bas.tests.ui.BaseWeb;
-import ru.comfortsoft.bas.utilities.RandomData;
+import ru.comfortsoft.bas.data.randomData.RandomData;
 
 @DisplayName("Objects list tests")
 public class ObjectsListTests extends BaseWeb {
-    private final RandomData randomValues = new RandomData();
-    private final CreateObjectRequestModel randomDataObject = CreateObjectRequestModel.builder()
-            .objType(randomValues.getRandomObjectType().getObjectTypeCode())
-            .address(randomValues.generateRandomAddress())
-            .name("Наименование объекта")
-            .parentCode(randomValues.getRandomDistrict().getCode())
-            .build();
+    private RandomData randomValues = new RandomData();
+    private CreateObjectRequestModel randomDataObject = randomValues.allRequiredParams();
 
     @Test
     @WithLogin
@@ -53,7 +48,7 @@ public class ObjectsListTests extends BaseWeb {
     @Test
     @WithLogin
     @DisplayName("Search by existing address using the 'Sidebar Filter'")
-    @Tag("regress")
+    @Tag("smoke")
     @Severity(SeverityLevel.NORMAL)
     @Owner("Yulia Azovtseva")
     void successfulSearchByAddressUsingSidebarFilterTest() {

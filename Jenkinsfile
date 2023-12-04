@@ -18,12 +18,12 @@ pipeline {
         choice(name: 'RESOLUTION',
                         choices: ['1920x1080', '1280x720'],
                         description: 'Select the screen resolution')
-        choice(name: 'API_URL',
-                        choices: ['https://bas.comfortsoft.ru/bas'],
-                        description: 'Enter the API URL')
-        choice(name: 'WEB_URL',
-                        choices: ['https://bas.comfortsoft.ru/frontbas'],
-                        description: 'Enter the web URL')
+        choice(name: 'TEST_ENV',
+                        choices: ['bas','m3'],
+                        description: 'Select the test environment')
+        choice(name: 'REMOTE_URL',
+                        choices: ['selenoid.autotests.cloud'],
+                        description: 'Select the url for remote execution')
         string(name: 'COMMENT',
                         defaultValue: '',
                         description: 'Enter a comment for the report')
@@ -42,7 +42,7 @@ pipeline {
         stage('Test') {
             steps {
                 withAllureUpload(name: '${JOB_NAME} - #${BUILD_NUMBER}', projectId: '3838', results: [[path: 'build/allure-results']], serverId: 'allure-server', tags: '') {
-                    sh 'gradle clean ${TASK} -DisRemote=true -Dbrowser=${BROWSER} -DbrowserVersion=${BROWSER_VERSION} -DbrowserSize=${RESOLUTION} -DwebUrl=${WEB_URL} -DapiUrl=${API_URL}'
+                    sh 'gradle clean ${TASK} -DisRemote=true -Dbrowser=${BROWSER} -DbrowserVersion=${BROWSER_VERSION} -DbrowserSize=${RESOLUTION} -Denv=${TEST_ENV} -DremoteUrl=${REMOTE_URL}'
                 }
             }
         }
@@ -68,7 +68,7 @@ pipeline {
                                       "base": {
                                         "logo": "",
                                         "project": "${JOB_NAME}",
-                                        "environment": "${WEB_URL}",
+                                        "environment": "${TEST_ENV}",
                                         "comment": "${COMMENT}",
                                         "reportLink": "${BUILD_URL}",
                                         "language": "en",

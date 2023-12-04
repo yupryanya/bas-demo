@@ -1,4 +1,4 @@
-package ru.comfortsoft.bas.data;
+package ru.comfortsoft.bas.data.dictionaries;
 
 public enum ObjectTypes {
     BUILDING("06", "Здание"),

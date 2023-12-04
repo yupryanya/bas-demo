@@ -2,8 +2,8 @@ package ru.comfortsoft.bas.api.objects;
 
 import io.restassured.response.Response;
 import ru.comfortsoft.bas.api.auth.LoginApi;
-import ru.comfortsoft.bas.api.endpoints.DictDataEndpoint;
-import ru.comfortsoft.bas.data.DictType;
+import ru.comfortsoft.bas.data.endpoints.DictDataEndpoint;
+import ru.comfortsoft.bas.data.dictionaries.DictType;
 import ru.comfortsoft.bas.models.objects.CreateObjectRequestModel;
 
 import static io.restassured.RestAssured.given;
