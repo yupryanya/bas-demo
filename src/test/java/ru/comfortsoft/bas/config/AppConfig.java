@@ -20,6 +20,5 @@ public interface AppConfig extends Config {
     String username();
 
     @Key("password")
-    @DefaultValue("123QWEasd")
     String password();
 }
